@@ -1,0 +1,266 @@
+/* ====== ЦВЕТ ЗАГЛАВИЯ СТРАНИЦЫ ====== */
+.view-header-title {
+  color: #f9f8f4 !important;
+  font-weight: normal;
+}
+
+/* ====== ЗАГОЛОВКИ В ОБАИХ РЕЖИМАХ ====== */
+
+/* H1 */
+.cm-header-1, .markdown-preview-view h1 .internal-link{
+  color: #f9f8f4;
+  font-size: 18px;
+  font-weight: normal;
+  font-family: 'Monolo', monospace !important;
+}
+
+/* H2 */
+.cm-header-2, .markdown-preview-view h2 .internal-link{
+  color: #f9f8f4;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: 'Monolo', monospace !important;
+}
+
+/* H3 */
+.cm-header-3, .markdown-preview-view h3 .internal-link{
+  color: #f9f8f4;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'Monolo', monospace !important;
+}
+
+/* H4 */
+.cm-header-4, .markdown-preview-view h4 .internal-link{
+  color: #f9f8f4;
+  font-size: 13px;
+  font-weight: normal;
+  font-family: 'Monolo', monospace !important;
+}
+
+/* ===== Оформление режима редактирования ===== */
+.cm-header-1 {
+  font-size: 22px !important;
+}
+
+.cm-header-2 {
+  font-size: 20px !important;
+}
+
+.cm-header-3 {
+  font-size: 18px !important;
+}
+
+.cm-header-4 {
+  font-size: 16px !important;
+}
+
+
+
+/* ===== ОСНОВНОЙ ТЕКСТ ===== */
+/*body, .cm-s-obsidian, .markdown-preview-view {*/
+/*  font-family: 'Monolo', monospace !important;*/
+/*  font-size: 15px;*/
+/*  color: #f9f2d9 !important;*/
+/*  background-color: #1e1e1e !important; */
+/*}*/
+
+/* ===== ССЫЛКИ ===== */
+a,
+.markdown-preview-view a,
+.cm-s-obsidian span.cm-link {
+  color: #b1cbec !important;
+  text-decoration: none !important;
+}
+
+a:hover,
+.cm-s-obsidian span.cm-link:hover {
+  text-decoration: underline !important;
+}
+
+.cm-hashtag,
+.internal-link {
+    font-weight: normal !important;
+}
+
+/* ===== ОСНОВНОЙ ТЕКСТ: Edit + Preview ===== */
+
+/* Режим просмотра (Preview) */
+.markdown-preview-view,
+.markdown-preview-view p,
+.markdown-preview-view li,
+.markdown-preview-view td {
+  font-family: 'Monolo', monospace !important;
+  font-size: 14px !important;
+  color: #f9f2d9 !important;
+}
+
+/* Режим редактирования (Edit) */
+.cm-s-obsidian .cm-line {
+  font-family: 'Monolo', monospace !important;
+  font-size: 14px !important;
+  color: #f9f2d9 !important;
+}
+
+/* Цвет текста в заголовках списков и блоков */
+/* Обратить внимание */
+.cm-s-obsidian span.cm-formatting,
+.cm-s-obsidian span.cm-variable {
+  color: #f9f8f4 !important;
+}
+
+/* Цвет текста внутри списков (edit + preview) */
+ul, ol {
+  color: #f9f2d9 !important;
+}
+
+/* ===== Увеличенные заголовки в режиме РЕДАКТИРОВАНИЯ ===== */
+/* === Именно на это реагирует === */
+
+.cm-line.HyperMD-header-1 {
+  font-size: 18px !important;
+  font-family: 'Monolo', monospace !important;
+}
+
+.cm-line.HyperMD-header-2 {
+  font-size: 16px !important;
+  font-family: 'Monolo', monospace !important;
+}
+
+.cm-line.HyperMD-header-3 {
+  font-size: 14px !important;
+  font-family: 'Monolo', monospace !important;
+}
+
+.cm-line.HyperMD-header-4 {
+  font-size: 13px !important;
+  font-family: 'Monolo', monospace !important;
+}
+
+/* ===== Внешние ссылки (http/https) ===== */
+.markdown-preview-view a[href^="http"],
+.cm-s-obsidian span.cm-url {
+  color: #82daad !important;
+  text-decoration: none !important;
+}
+
+.markdown-preview-view a[href^="http"]:hover,
+.cm-s-obsidian span.cm-url:hover {
+  text-decoration: underline !important;
+}
+
+/* Цвет текста и фона тегов в режиме предпросмотра */
+.markdown-preview-view .tag {
+  color: #82daad !important;         /* Цвет текста */
+  background-color: #2a2a2a !important; /* Фон — можешь изменить */
+  border-radius: 8px;
+/*  padding: 2px 8px; */
+  font-size: 14px;
+}
+
+/* Цвет тегов в режиме редактирования */
+.cm-s-obsidian span.cm-hashtag {
+  color: #82daad !important;
+  background-color: #2a2a2a !important;
+  border-radius: 6px;
+/*  padding: 1px 6px; */
+  font-size: 14px;
+}
+
+/* ==== Это все работает ==== */
+/* ========================== */
+
+/* ==== Заголовок с линком ==== */
+a.cm-underline {
+    font-weight: normal !important;
+}
+
+/* === Именно это оформление действует на заголовки в превью === */
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4 {
+    font-size: 18px !important;  /* Уменьшите размер шрифта */
+    font-weight: normal !important;  /* Уберите жирность */
+    color: #f9f8f4;
+}
+
+
+/* === Это оформление текста с 2 звездочками === */
+span.cm-strong {
+    color: #ec5758 !important;
+    font-weight: normal !important;
+}
+
+strong {
+    color: #ec5758 !important;
+    font-weight: normal !important;
+}
+
+.cm-line {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+
+/* === Интервал между строками в списке === */
+.HyperMD-list-line {
+  line-height: 1.4em;
+}
+
+/* === Выделенный текст в апострофах === */
+.markdown-rendered code {
+  color: #a8c7fa !important;
+}
+.cm-inline-code {
+  color: #a8c7fa !important;
+}
+
+/* === Для схем ===* /
+:root {
+  --mermaid-label-color: white !important;
+}
+
+/* Белые подписи на рёбрах Mermaid */
+.edgeLabel tspan {
+  fill: white !important;
+}
+
+/* ===== ВНУТРЕННИЕ ССЫЛКИ: EDIT = PREVIEW ===== */
+
+/* Основной текст */
+.cm-s-obsidian span.cm-link,
+.cm-s-obsidian span.cm-hmd-internal-link {
+  color: #aec7f6 !important;
+  text-decoration: none !important;
+  font-weight: normal !important;
+}
+
+/* Hover — как в preview */
+.cm-s-obsidian span.cm-link:hover,
+.cm-s-obsidian span.cm-hmd-internal-link:hover {
+  text-decoration: underline !important;
+}
+
+/* ===== Канал ==выделение== : зелёный курсив (Edit + Preview) ===== */
+/* Цвет можно менять в переменной ниже */
+
+/* Режим редактирования */
+.cm-s-obsidian .cm-highlight {
+  background-color: transparent !important;
+  color: #4a9d5b !important;
+  font-style: italic !important;
+}
+
+/* Режим просмотра */
+mark,
+.markdown-preview-view mark,
+.markdown-rendered mark {
+  background-color: transparent !important;
+  color: #4a9d5b !important;
+  font-style: italic !important;
+}

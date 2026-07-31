@@ -1,0 +1,197 @@
+{
+  "main": {
+    "id": "4c089193d8d07821",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6abc10c7537ea29",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ee201582e86264ad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "SPRING Content.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SPRING Content"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4b2ce27a31e72d6f",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "f6501596072f291b",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "d5bf116e1d2b59ec",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "tag:#PrimitiveTypes",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "bbfede9c9078b3f1",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "55c6a0aba7b03cc6",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "95502d69fbc016ad",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "7c6935270981b582",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "1.1.1 Compilation Unit - минимальная единица кода.md",
+            "collapseAll": true,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "49be97ac87894477",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "Notes/Морской сюрвейер (Marine surveyor).md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "3a71d19dee769ad6",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "SPRING Content.md",
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      }
+    ],
+    "currentTab": 2
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "ee201582e86264ad",
+  "lastOpenFiles": [
+    "Notes/Что надо сделать?.md",
+    "Notes/Ход разработки и описание бизнес-модели приложения wellnara.life.md",
+    "SPRING Content.md",
+    "Что надо сделать?.md",
+    "Бизнес-модель приложения wellnara.life.md",
+    "Notes/REST Annotations.md",
+    "Notes/Описание проекта careflow.md",
+    "Notes/Справка по Github.md",
+    "Notes/Ход проекта careflow.md",
+    "Notes/Проект Service Marketplace.md",
+    "Notes/Аннотации в проекте.md",
+    "Notes/Построение и развитие проекта.md",
+    "Notes/Описание проекта.md",
+    "Notes/Описание Маркетплейс услуг.md",
+    "Notes/Spring meta-annotations.md",
+    "Base/Books and Edu.md",
+    "SWIFT Content.md",
+    "Использование H2.md",
+    "Fachkunde Elektrotechnik.md",
+    "Fachkunde Inhaltsverzeichnis.md",
+    "Notes/Fachkunde/Fachkunde Inhaltsverzeichnis.md",
+    "Практическое задание. Оценка производственных рисков.md",
+    "Notes/Fachkunde/1. Arbeitssicherheit und Gesundheitsschutz (Охрана труда и защита здоровья).md",
+    "Electric. Все об электрике.md",
+    "1.2 Закон о безопасности продукции (Produktsicherheitsgesetz).md",
+    "1. Охрана труда и защита здоровья(Arbeitssicherheit und Gesundheitsschutz).md",
+    "Attachments/Pasted image 20260118161537.png",
+    "Attachments/Pasted image 20260118161456.png",
+    "Attachments/Pasted image 20260118161424.png",
+    "Attachments/Pasted image 20260118161605.png",
+    "Attachments/Fachkunde Elektrotechnik 27Ed.pdf",
+    "Notes/Ch13",
+    "Attachments/Pasted image 20250918171311.png",
+    "Attachments/Pasted image 20250918172141.png",
+    "Oracle Certified Professional 1Z0-829 Copy.pdf",
+    "Notes/Core_Topics",
+    "Untitled.canvas"
+  ]
+}

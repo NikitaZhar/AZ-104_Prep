@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZ-104 — Describe Azure Storage Services Quiz</title>
+<style>
+:root{--bg:#0b1f2a;--panel:#102b3a;--text:#eef7fb;--muted:#a9c0cc;--accent:#7cc7ff;--accent2:#9ed8ff;--correct:#2ecc71;--wrong:#ff6b6b;--border:#315365}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#081922,#102b3a);color:var(--text);min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:28px}.app{width:min(1050px,100%);background:rgba(16,43,58,.98);border:1px solid var(--border);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}header{padding:28px 32px 18px;border-bottom:1px solid var(--border);background:rgba(8,25,34,.6)}h1{margin:0 0 10px;font-size:26px}.subtitle{color:var(--muted);font-size:15px;line-height:1.5}.progress-wrap{padding:22px 32px 0}.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-bottom:10px}.bar{width:100%;height:8px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .25s ease}main{padding:32px}.section{display:inline-block;color:var(--accent2);background:rgba(124,199,255,.12);border:1px solid rgba(124,199,255,.25);padding:8px 12px;border-radius:999px;font-size:14px;margin-bottom:20px}.question{font-size:24px;line-height:1.45;margin:0 0 26px}.question code,.option code{background:rgba(124,199,255,.12);border:1px solid rgba(124,199,255,.25);color:var(--accent2);padding:1px 6px;border-radius:6px;font-family:Consolas,Monaco,monospace;font-size:.92em}.options{display:grid;gap:12px;margin-bottom:24px}.option{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:rgba(8,25,34,.45);cursor:pointer;transition:border-color .15s ease,background .15s ease}.option:hover{border-color:var(--accent);background:rgba(124,199,255,.08)}.option input{margin-top:3px;transform:scale(1.2);accent-color:var(--accent)}.option.correct{border-color:var(--correct);background:rgba(46,204,113,.12)}.option.wrong{border-color:var(--wrong);background:rgba(255,107,107,.12)}.letter{color:var(--accent2);font-weight:bold;width:22px;flex:0 0 auto}.hint{color:var(--muted);font-size:14px;margin:-8px 0 16px}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px}button{border:0;border-radius:12px;padding:13px 18px;font-size:16px;font-weight:700;cursor:pointer;background:var(--accent);color:#062131}button.secondary{background:rgba(255,255,255,.12);color:var(--text);border:1px solid var(--border)}button:disabled{opacity:.45;cursor:not-allowed}.feedback{display:none;margin-top:22px;padding:18px;border-radius:14px;border:1px solid var(--border);background:rgba(8,25,34,.55);line-height:1.55}.feedback.show{display:block}.status{font-weight:800;margin-bottom:8px}.ok{color:var(--correct)}.bad{color:var(--wrong)}.results{display:none;padding:32px;line-height:1.55}.results.show{display:block}.score{font-size:42px;font-weight:800;margin:12px 0;color:var(--accent2)}.review{margin-top:24px;display:grid;gap:12px}.review-item{border:1px solid var(--border);border-radius:14px;padding:14px 16px;background:rgba(8,25,34,.45)}.review-item strong{color:var(--accent2)}.hidden{display:none}@media(max-width:640px){body{padding:12px}header,main,.progress-wrap,.results{padding-left:18px;padding-right:18px}.question{font-size:20px}h1{font-size:22px}}
+</style></head>
+<body><div class="app"><header><h1>AZ-104 Prerequisites — Describe Azure Storage Services</h1><div class="subtitle"></div></header>
+<div id="quizArea"><div class="progress-wrap"><div class="progress-label"><span id="counter"></span><span id="scoreLive"></span></div><div class="bar"><div class="fill" id="progressFill"></div></div></div>
+<main><div class="section" id="section"></div><p class="question" id="question"></p><div class="hint" id="hint"></div><div class="options" id="options"></div><div class="controls"><button id="checkBtn">Check answer</button><button id="nextBtn" class="secondary" disabled>Next</button><button id="restartBtn" class="secondary">Restart</button></div><div class="feedback" id="feedback"><div class="status" id="status"></div><div id="explanation"></div></div></main></div>
+<div class="results" id="results"><h2>Quiz completed</h2><div class="score" id="finalScore"></div><p id="finalText"></p><div class="controls"><button id="restartBtn2">Restart quiz</button><button id="exportMistakesBtn" class="secondary">Export mistakes to journal</button><button id="createJournalBtn" class="secondary">No journal yet — create it</button></div><div class="review" id="review"></div></div></div>
+<script>
+const questions = [{"section": "Storage Accounts", "question": "A team needs a single Azure namespace that holds blobs, file shares, queues, and tables and serves as the management boundary for that data. Which resource provides it?", "options": ["An Azure availability zone", "An Azure virtual network", "An Azure storage account", "An Azure management group"], "answer": 2, "explanation": "A storage account provides a unique namespace for Azure Storage data and is the boundary for services such as Blob, Files, Queue, and Table storage."}, {"section": "Storage Accounts", "question": "What does the storage account type you pick at creation time determine?", "options": ["The available storage services and redundancy options for the account", "The Azure region pairs used across the whole subscription", "The role assignments applied to every resource group", "The DNS records published for a custom domain"], "answer": 0, "explanation": "The account type determines which storage services are supported and which redundancy options are available, and it influences the suitable use cases."}, {"section": "Storage Accounts", "question": "A solution needs broad support for blobs, file shares, queues, and tables and is recommended for most Azure Storage scenarios. Which account type fits?", "options": ["Premium page blobs", "Standard general-purpose v2", "Premium file shares", "Premium block blobs"], "answer": 1, "explanation": "Standard general-purpose v2 supports blobs, file shares, queues, and tables and is the recommended type for most scenarios."}, {"section": "Storage Accounts", "question": "A workload has high transaction rates and needs consistently low storage latency for block blobs. Which account type does the material recommend?", "options": ["Premium file shares", "Standard general-purpose v2", "Premium block blobs", "Premium page blobs"], "answer": 2, "explanation": "Premium block blobs is recommended for high transaction rates, smaller objects, or consistently low storage latency."}, {"section": "Storage Accounts", "question": "An application needs a storage account that supports both SMB and NFS file shares. Which account type does the material point to?", "options": ["Premium page blobs", "Premium block blobs", "Standard general-purpose v2", "Premium file shares"], "answer": 3, "explanation": "Premium file shares is the account type for file shares and is the one recommended when both SMB and NFS support is required."}, {"section": "Storage Accounts", "question": "Which redundancy options are listed as supported for the Premium block blobs account type?", "options": ["LRS and ZRS", "LRS only", "GRS and RA-GRS", "GZRS and RA-GZRS"], "answer": 0, "explanation": "Premium block blobs supports LRS and ZRS redundancy options."}, {"section": "Storage Account Endpoints", "question": "What combination forms the endpoints used to reach a storage account's data?", "options": ["The subscription ID and the resource group name", "The account name and the Azure Storage service endpoint", "The region pair and the availability zone number", "The custom domain and a DNS alias record"], "answer": 1, "explanation": "The combination of the unique account name and the service-specific Storage endpoint forms each service endpoint for the account."}, {"section": "Storage Account Endpoints", "question": "Which rules apply to naming a storage account?", "options": ["3 to 24 characters, lowercase letters and numbers, globally unique", "8 to 32 characters, any case, unique per subscription", "1 to 15 characters, letters only, unique per region", "5 to 50 characters, including hyphens, unique per resource group"], "answer": 0, "explanation": "Account names must be 3 to 24 characters, contain only lowercase letters and numbers, and be unique within Azure."}, {"section": "Storage Account Endpoints", "question": "A big-data workload uses Data Lake Storage Gen2 capabilities. Which endpoint subdomain corresponds to that access?", "options": ["<code>&lt;account&gt;.file.core.windows.net</code>", "<code>&lt;account&gt;.dfs.core.windows.net</code>", "<code>&lt;account&gt;.queue.core.windows.net</code>", "<code>&lt;account&gt;.table.core.windows.net</code>"], "answer": 1, "explanation": "Data Lake Storage Gen2 is reached through the dfs endpoint subdomain."}, {"section": "Storage Account Endpoints", "question": "Which endpoint subdomain is used to reach Azure Files shares?", "options": ["<code>&lt;account&gt;.blob.core.windows.net</code>", "<code>&lt;account&gt;.table.core.windows.net</code>", "<code>&lt;account&gt;.file.core.windows.net</code>", "<code>&lt;account&gt;.queue.core.windows.net</code>"], "answer": 2, "explanation": "Azure Files is reached through the file endpoint subdomain."}, {"section": "Storage Redundancy", "question": "What is the stated purpose of keeping multiple copies of data in Azure Storage?", "options": ["To remove the need for access control on the account", "To protect against hardware failures, outages, and regional disasters", "To convert standard accounts into premium accounts", "To make every region readable by default"], "answer": 1, "explanation": "Azure Storage keeps multiple copies so data is protected from hardware failures, outages, and regional disasters; the chosen option sets durability, availability, and cost."}, {"section": "Storage Redundancy", "question": "Which factors does the material list as key when choosing a redundancy option? (Choose Three)", "options": ["How data is replicated in the primary region", "Whether data is replicated to a distant second region", "Whether the app needs read access to the secondary region", "The portal theme selected by the administrator", "The custom domain assigned to the account"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "The decision factors are primary-region replication, replication to a geographically distant secondary region, and whether read access to the secondary region is required."}, {"section": "Redundancy in the Primary Region", "question": "How many times is data replicated in the primary region, regardless of the redundancy option?", "options": ["It is always replicated three times", "It is replicated two times", "It is replicated six times", "It is replicated one time"], "answer": 0, "explanation": "Data in Azure Storage is always replicated three times within the primary region."}, {"section": "Redundancy in the Primary Region", "question": "Which pair of options replicate data only within the primary region (no secondary region)?", "options": ["Locally redundant storage and zone-redundant storage", "Geo-redundant storage and geo-zone-redundant storage", "Read-access geo-redundant and read-access geo-zone-redundant storage", "Geo-redundant storage and zone-redundant storage"], "answer": 0, "explanation": "The primary-region options are locally redundant storage (LRS) and zone-redundant storage (ZRS); the geo options add a secondary region."}, {"section": "Locally Redundant Storage", "question": "How does locally redundant storage (LRS) place its three copies?", "options": ["Across three availability zones in the primary region", "Within a single data center in the primary region", "Across a primary and a secondary region", "Across three separate Azure regions"], "answer": 1, "explanation": "LRS replicates data three times within a single data center in the primary region."}, {"section": "Locally Redundant Storage", "question": "What is the main limitation of LRS that the material highlights?", "options": ["It cannot protect data against the failure of a single physical disk", "It always requires a configured secondary region in a distant location", "All replicas stay in one data center, so a data-center disaster can lose data", "It grants applications read access to a secondary region by default"], "answer": 2, "explanation": "Because all LRS replicas stay in one data center, a data-center-level disaster can still result in data loss."}, {"section": "Zone-Redundant Storage", "question": "How does zone-redundant storage (ZRS) replicate data in supported regions?", "options": ["Asynchronously to a distant secondary region", "Synchronously across three availability zones in the primary region", "One direction from an on-premises file server", "By manual copy between two storage accounts"], "answer": 1, "explanation": "ZRS replicates data synchronously across three availability zones in the primary region."}, {"section": "Zone-Redundant Storage", "question": "For which kind of requirement does Microsoft recommend ZRS?", "options": ["High availability in-region and replication kept within a country or region", "Lowest possible storage cost inside a single server rack", "Offline transfer of tens of terabytes by physical shipment", "Read access to data held in a paired secondary region"], "answer": 0, "explanation": "Microsoft recommends ZRS for high availability in-region scenarios and when replication must stay within a country or region."}, {"section": "Redundancy in a Secondary Region", "question": "How does Azure determine the secondary region for a storage account?", "options": ["The administrator picks any region at failover time", "Azure assigns the paired secondary based on region pairs", "It mirrors the region with the lowest cost that day", "The customer selects it separately per blob container"], "answer": 1, "explanation": "You choose the primary region, and Azure assigns the paired secondary region based on region pairs."}, {"section": "Redundancy in a Secondary Region", "question": "By default, what is true about data in the secondary region before failover?", "options": ["It is writable by applications at any time", "It is not readable unless failover occurs", "It is always more current than the primary", "It is stored as a single copy only"], "answer": 1, "explanation": "By default, secondary-region data is not readable unless a failover occurs."}, {"section": "Redundancy in a Secondary Region", "question": "Why can a primary-region failure result in data loss with geo-redundant options?", "options": ["Replication to the secondary region is asynchronous", "The secondary region keeps only one copy", "Failover deletes the primary data first", "The secondary region uses a slower storage tier"], "answer": 0, "explanation": "Because replication to the secondary region is asynchronous, recent writes may be lost if the primary cannot be recovered; the lag is described by the RPO."}, {"section": "Geo-Redundant Storage", "question": "How does geo-redundant storage (GRS) replicate data?", "options": ["ZRS in the primary region and LRS in the secondary region", "LRS in the primary region and LRS in the secondary region", "ZRS in both the primary and secondary regions", "LRS in the primary region with no secondary copy"], "answer": 1, "explanation": "GRS uses LRS in the primary region (synchronous, three copies) and then replicates asynchronously to the secondary region, which also uses LRS."}, {"section": "Geo-Zone-Redundant Storage", "question": "How does geo-zone-redundant storage (GZRS) combine its replication?", "options": ["LRS in the primary region and ZRS in the secondary region", "ZRS in the primary region and LRS in the secondary region", "ZRS in the primary region and ZRS in the secondary region", "LRS in both the primary and secondary regions"], "answer": 1, "explanation": "GZRS uses ZRS across three zones in the primary region and replicates to the paired secondary region using LRS."}, {"section": "Geo-Zone-Redundant Storage", "question": "For which type of workload does Microsoft recommend GZRS?", "options": ["Workloads needing maximum consistency, availability, and disaster-recovery resilience", "Workloads needing only the lowest storage cost", "Workloads confined to one rack in one data center", "Workloads confined to a single availability zone"], "answer": 0, "explanation": "Microsoft recommends GZRS for workloads that need maximum consistency, availability, and disaster-recovery resilience."}, {"section": "Read Access to Secondary Region", "question": "An application must read secondary-region data before any failover happens. Which options enable that?", "options": ["LRS or ZRS", "RA-GRS or RA-GZRS", "GRS or GZRS without read access", "AzCopy synchronization"], "answer": 1, "explanation": "Read access to the secondary region before failover requires RA-GRS or RA-GZRS."}, {"section": "Read Access to Secondary Region", "question": "What is the key distinction between GRS and RA-GRS?", "options": ["GRS keeps one copy while RA-GRS keeps three copies of the data", "RA-GRS adds read access to the secondary region not in plain GRS", "RA-GRS removes asynchronous replication so the copy is always current", "GRS serves only blob data while RA-GRS serves only table data"], "answer": 1, "explanation": "The RA prefix indicates read access to the secondary region, which plain GRS does not provide by default."}, {"section": "Read Access to Secondary Region", "question": "What caveat applies when reading from the secondary region?", "options": ["The secondary data holds no replicated copy of the data", "The secondary data may lag the primary because of the RPO", "Read access converts LRS into ZRS", "The secondary copy has the lowest storage cost of any tier"], "answer": 1, "explanation": "Because replication is asynchronous, secondary-region data may not be up to date, as reflected by the recovery point objective (RPO)."}, {"section": "Storage Redundancy Scenarios", "question": "A workload must survive the loss of one data center or zone in its region but does not need protection from a full regional outage or read access to a secondary region. Which option is the minimal fit?", "options": ["RA-GZRS", "RA-GRS", "ZRS", "Azure Data Box"], "answer": 2, "explanation": "ZRS protects against a zone or data-center failure inside the primary region without adding secondary-region replication or read access."}, {"section": "Azure Storage Services", "question": "Which of these are listed as core Azure Storage data services? (Choose Three)", "options": ["Azure Blobs", "Azure Queues", "Azure Disks", "Azure Migrate", "Azure Data Box"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "The core data services listed are Azure Blobs, Azure Files, Azure Queues, Azure Disks, and Azure Tables; Migrate and Data Box are migration tools, not core data services."}, {"section": "Benefits of Azure Storage", "question": "A team wants storage where Azure handles hardware maintenance, updates, and critical issues. Which listed benefit is this?", "options": ["Scalable", "Secure", "Managed", "Durable"], "answer": 2, "explanation": "The 'managed' benefit means Azure handles hardware maintenance, updates, and critical issues for you."}, {"section": "Benefits of Azure Storage", "question": "What does the 'secure' benefit of Azure Storage mean according to the material?", "options": ["Data is encrypted by the service with fine-grained access control", "Data is replicated to exactly one extra region", "Data is cached on a local Windows Server by default", "Data is limited to access from a single virtual network"], "answer": 0, "explanation": "All data written to a storage account is encrypted by the service, and Azure Storage provides fine-grained control over who can access data."}, {"section": "Azure Blobs", "question": "How does the material characterize Azure Blob Storage?", "options": ["A managed relational database service for SQL workloads", "A reliable messaging store for application components", "A massively scalable object store for unstructured text or binary data", "Block-level disk volumes that attach to virtual machines"], "answer": 2, "explanation": "Azure Blob Storage is an unstructured object store for large volumes of text or binary data."}, {"section": "Azure Blobs", "question": "Which scenario is listed as a good fit for Blob storage?", "options": ["Streaming video and audio or serving images and documents", "Mounting a shared drive for a legacy application", "Storing structured non-relational entities", "Attaching an operating-system disk to a VM"], "answer": 0, "explanation": "Blob storage suits serving images or documents, distributed file access, streaming media, backup and archive, and analytics data."}, {"section": "Azure Blobs", "question": "Which methods can client applications use to access blobs?", "options": ["Only SMB and NFS mount operations from a client", "URLs, the REST API, PowerShell, the CLI, or a client library", "Only physical shipment of the data through Data Box", "Only the Azure Migrate discovery and assessment tools"], "answer": 1, "explanation": "Blobs can be accessed via URLs, the Azure Storage REST API, PowerShell, the CLI, or client libraries available for several languages."}, {"section": "Blob Storage Tiers", "question": "A website stores images that users request frequently. Which access tier fits best?", "options": ["Cool access tier", "Hot access tier", "Cold access tier", "Archive access tier"], "answer": 1, "explanation": "The hot tier is optimized for data that is accessed frequently, such as website images."}, {"section": "Blob Storage Tiers", "question": "Invoices are accessed infrequently and kept online for at least 30 days. Which tier fits?", "options": ["Hot access tier", "Archive access tier", "Cool access tier", "Cold access tier"], "answer": 2, "explanation": "The cool tier is optimized for infrequently accessed data stored for at least 30 days."}, {"section": "Blob Storage Tiers", "question": "Data is rarely read but must stay online and is retained for at least 90 days. Which tier matches?", "options": ["Cold access tier", "Hot access tier", "Archive access tier", "Cool access tier"], "answer": 0, "explanation": "The cold tier is optimized for infrequently accessed data stored for at least 90 days."}, {"section": "Blob Storage Tiers", "question": "Long-term backups are rarely accessed and tolerate flexible retrieval latency, retained at least 180 days. Which tier fits?", "options": ["Cool access tier", "Cold access tier", "Hot access tier", "Archive access tier"], "answer": 3, "explanation": "The archive tier suits rarely accessed data stored for at least 180 days with flexible latency requirements."}, {"section": "Blob Storage Tiers", "question": "Which statement about setting access tiers is correct?", "options": ["The archive tier can be set at the account level just like the other three tiers", "Hot, cool, and cold can be set at the account level; archive only at the blob level", "No access tier can be changed at all once a blob has been uploaded to storage", "Only the archive tier can ever be set at the blob level, not the other tiers"], "answer": 1, "explanation": "Hot, cool, and cold can be set at the account level; archive is not available at the account level, though all four can be set at the blob level."}, {"section": "Azure Files", "question": "Which description best matches Azure Files?", "options": ["A NoSQL key-value table store", "Fully managed cloud file shares over SMB or NFS", "A physical appliance for offline migration", "A messaging store for application components"], "answer": 1, "explanation": "Azure Files provides fully managed file shares in the cloud accessible over SMB or NFS."}, {"section": "Azure Files", "question": "Which clients can access SMB Azure file shares?", "options": ["Windows, Linux, and macOS clients", "Windows clients only", "Linux clients only", "Azure VMs in one region only"], "answer": 0, "explanation": "SMB Azure file shares are accessible from Windows, Linux, and macOS clients."}, {"section": "Azure Files", "question": "What does Azure File Sync add when used with SMB Azure file shares?", "options": ["Bidirectional copy between two storage accounts", "Caching on Windows Servers for fast local access", "Conversion of file shares into queue messages", "Read access to a paired secondary region"], "answer": 1, "explanation": "SMB Azure file shares can be cached on Windows Servers with Azure File Sync for fast access near where the data is used."}, {"section": "Azure Queues", "question": "What is Azure Queue storage used for?", "options": ["Attaching block-level disk volumes to virtual machines", "Storing structured non-relational data in tables", "Holding messages for asynchronous processing between components", "Hosting managed file shares over SMB and NFS"], "answer": 2, "explanation": "Azure Queue storage holds large numbers of messages for asynchronous processing between application components."}, {"section": "Azure Queues", "question": "What are the stated limits and access method for Queue storage?", "options": ["Authenticated HTTP/HTTPS calls, millions of messages, up to 64 KB each", "Anonymous SMB mounts, thousands of messages, up to 1 MB each", "NFS mounts, a single message, up to 8 KB", "REST calls, ten messages, up to 256 KB each"], "answer": 0, "explanation": "Queues are accessed by authenticated HTTP/HTTPS calls, can hold millions of messages, and support messages up to 64 KB."}, {"section": "Azure Queues", "question": "Which Azure service is commonly paired with queues so messages trigger background actions?", "options": ["Azure Functions", "Azure File Sync", "Azure Data Box", "Azure Migrate"], "answer": 0, "explanation": "Queue storage is commonly paired with Azure Functions so messages trigger background actions."}, {"section": "Azure Disks", "question": "What does Azure Disk storage provide?", "options": ["Managed file shares for cloud and on-premises use", "Block-level storage volumes for Azure virtual machines", "A reliable messaging store for application components", "A NoSQL option for structured non-relational data"], "answer": 1, "explanation": "Azure Disk storage (managed disks) provides block-level volumes for Azure VMs."}, {"section": "Azure Disks", "question": "What advantage does Azure managing the disks provide, per the material?", "options": ["Improved resiliency and simpler operations", "Read access to a secondary region", "Lower retrieval latency than the archive tier", "Bidirectional sync with a Windows file server"], "answer": 0, "explanation": "Managed disks are virtualized and managed by Azure for improved resiliency and simpler operations."}, {"section": "Azure Tables", "question": "How is Azure Table storage classified?", "options": ["As a physical device used for offline data transfer", "As a managed file share running over SMB and NFS", "As a NoSQL store for structured, non-relational data", "As a command-line tool used for copying files"], "answer": 2, "explanation": "Azure Table storage is a NoSQL store for large amounts of structured, non-relational data."}, {"section": "Azure Tables", "question": "A solution must store structured non-relational entities without a relational database. Which service fits?", "options": ["Azure Disks", "Azure Files", "Azure Tables", "Azure Data Box"], "answer": 2, "explanation": "Azure Tables is intended for structured, non-relational data accessed through authenticated calls."}, {"section": "Data Migration Options", "question": "Which pairing of Azure migration approaches does the material describe?", "options": ["Azure Migrate for real-time migration and Data Box for asynchronous transfer", "Azure Migrate for offline shipping and Data Box for live server moves", "AzCopy for assessment work and File Sync for bulk physical shipping", "Storage Explorer for discovery work and Queues for moving the data"], "answer": 0, "explanation": "Azure supports real-time migration with Azure Migrate and asynchronous data migration with Azure Data Box."}, {"section": "Azure Migrate", "question": "What role does Azure Migrate play?", "options": ["A hub to assess and migrate on-premises infrastructure to Azure", "A one-direction file copy tool between storage accounts", "A managed SMB and NFS file share service", "A read-access redundancy option for a secondary region"], "answer": 0, "explanation": "Azure Migrate is a hub that helps assess and migrate an on-premises datacenter to Azure."}, {"section": "Azure Migrate", "question": "Which capabilities are integrated into the Azure Migrate hub? (Choose Three)", "options": ["Discovery and assessment", "Server migration", "Database and web app migration", "Offline disk shipping with a physical device", "Bidirectional file caching on Windows Server"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "The Migrate hub includes discovery and assessment, server migration, and database and web app migration; physical shipping is Data Box and caching is File Sync."}, {"section": "Azure Data Box", "question": "A company must move tens of terabytes to Azure but network bandwidth is limited. Which service fits?", "options": ["AzCopy over the public internet", "Azure Queues", "Azure Data Box", "Azure Tables"], "answer": 2, "explanation": "Azure Data Box suits very large data sets, often tens of terabytes or more, when network bandwidth is limited."}, {"section": "Azure Data Box", "question": "What is the maximum usable storage capacity of a Data Box device, per the material?", "options": ["80 terabytes", "8 terabytes", "800 terabytes", "16 terabytes"], "answer": 0, "explanation": "The Data Box device has a maximum usable storage capacity of 80 terabytes."}, {"section": "Azure Data Box", "question": "For an import order, what happens after Microsoft receives the returned device?", "options": ["The customer rebuilds the hardware in an Azure datacenter", "The data is automatically uploaded to Azure", "The device becomes a permanent local file server", "The data is converted into queue messages"], "answer": 1, "explanation": "For import orders, the data is automatically uploaded once Microsoft receives the returned Data Box."}, {"section": "Azure Data Box", "question": "How are the device disks handled after an import order is uploaded?", "options": ["They are wiped clean per NIST 800-88r1 standards", "They are shipped to a second customer unchanged", "They are archived in the cool storage tier", "They are mounted as a permanent VM disk"], "answer": 0, "explanation": "After an import order is uploaded, the disks are wiped clean in accordance with NIST 800-88r1 standards."}, {"section": "AzCopy", "question": "What kind of tool is AzCopy?", "options": ["A graphical app for managing all Azure subscriptions", "A command-line utility for copying blobs or files", "A physical appliance used for offline migration", "A redundancy option giving secondary-region read access"], "answer": 1, "explanation": "AzCopy is a command-line utility used to upload, download, copy, and synchronize blobs or files to or from a storage account."}, {"section": "AzCopy", "question": "What limitation applies to AzCopy synchronization?", "options": ["It synchronizes bidirectionally based on file timestamps and metadata", "It works for Azure Tables and supports no other storage service", "It synchronizes in only one direction, from a designated source to a destination", "It requires shipping a physical hardware device back to Microsoft"], "answer": 2, "explanation": "AzCopy synchronization is one-direction; it copies from the designated source to the destination and does not sync bidirectionally on timestamps or metadata."}, {"section": "Azure Storage Explorer", "question": "What kind of tool is Azure Storage Explorer?", "options": ["A standalone graphical app for managing files and blobs", "A command-line-only utility for copying blobs", "A physical migration device for large data sets", "A redundancy option for regional disaster recovery"], "answer": 0, "explanation": "Azure Storage Explorer is a standalone app with a graphical interface for managing files and blobs in a storage account."}, {"section": "Azure Storage Explorer", "question": "What does Storage Explorer use on the backend to perform file and blob tasks?", "options": ["AzCopy", "Azure File Sync", "Azure Data Box", "Azure Migrate"], "answer": 0, "explanation": "Storage Explorer runs on Windows, macOS, and Linux and uses AzCopy on the backend for its file and blob management tasks."}, {"section": "Azure File Sync", "question": "What is the primary purpose of Azure File Sync?", "options": ["To copy blobs one direction between two storage accounts via the CLI", "To centralize file shares in Azure Files while keeping a Windows file server", "To ship very large data sets to Azure using a physical hardware appliance", "To store asynchronous queue messages exchanged between application components"], "answer": 1, "explanation": "Azure File Sync centralizes file shares in Azure Files while preserving the flexibility, performance, and compatibility of a Windows file server."}, {"section": "Azure File Sync", "question": "Which Azure File Sync feature keeps frequently accessed files local while leaving the rest in the cloud until requested?", "options": ["Read-access geo-redundancy", "Cloud tiering", "Blob archive rehydration", "Queue decoupling"], "answer": 1, "explanation": "Cloud tiering keeps the most frequently accessed files cached locally and leaves infrequently accessed files in Azure until they are requested."}, {"section": "Azure File Sync", "question": "After installing Azure File Sync on a local Windows server, how does it keep that server's files and Azure Files aligned?", "options": ["It syncs them bidirectionally and automatically", "It copies them one direction on a manual schedule", "It mounts them as a read-only archive", "It exports them to a physical device"], "answer": 0, "explanation": "Once installed on a local Windows server, Azure File Sync automatically stays bidirectionally synced with the files in Azure."}];
+let current=0, score=0, checked=false, userAnswers=Array(questions.length).fill(null);
+let shuffledOptions = [];
+let correctSet = [];
+const $=id=>document.getElementById(id);
+
+function isMulti(q){return Array.isArray(q.answer);}
+
+function shuffleArray(array){
+  const result = [...array];
+  for(let i=result.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function updateLiveScore(){
+  const percent = current === 0 && score === 0 ? 0 : Math.round((score / questions.length) * 100);
+  $('scoreLive').textContent = `Score: ${score} / ${questions.length} (${percent}%)`;
+}
+
+function renderQuestion(){
+  const q=questions[current];
+  checked=false;
+  const answerArr = isMulti(q) ? q.answer : [q.answer];
+  shuffledOptions = shuffleArray(q.options.map((text, originalIndex)=>({text, originalIndex})));
+  correctSet = shuffledOptions.map((o,idx)=>answerArr.includes(o.originalIndex)?idx:-1).filter(x=>x>=0);
+
+  $('counter').textContent=`Question ${current+1} of ${questions.length}`;
+  updateLiveScore();
+  $('progressFill').style.width=`${(current/questions.length)*100}%`;
+  $('section').textContent=q.section;
+  $('question').innerHTML=q.question;
+  $('hint').textContent = isMulti(q) ? `Select ${q.selectCount}.` : '';
+  $('feedback').classList.remove('show');
+  $('status').textContent='';
+  $('explanation').textContent='';
+  $('nextBtn').disabled=true;
+  $('checkBtn').disabled=false;
+  $('options').innerHTML='';
+
+  const inputType = isMulti(q) ? 'checkbox' : 'radio';
+  shuffledOptions.forEach((option,index)=>{
+    const label=document.createElement('label');
+    label.className='option';
+    label.innerHTML=`<input type="${inputType}" name="answer" value="${index}"><span class="letter">${String.fromCharCode(65+index)}.</span><span>${option.text}</span>`;
+    $('options').appendChild(label);
+  });
+
+}
+
+function enforceLimit(){
+  const q=questions[current];
+  if(!isMulti(q))return;
+  const boxes=[...document.querySelectorAll('input[name="answer"]')];
+  const checkedCount=boxes.filter(b=>b.checked).length;
+  boxes.forEach(b=>{ b.disabled = (!b.checked && checkedCount>=q.selectCount); });
+}
+
+function selectedIndices(){
+  return [...document.querySelectorAll('input[name="answer"]:checked')].map(b=>Number(b.value));
+}
+
+function checkAnswer(){
+  if(checked)return;
+  const q=questions[current];
+  const sel=selectedIndices();
+  const need = isMulti(q) ? q.selectCount : 1;
+  if(sel.length!==need){
+    $('feedback').classList.add('show');
+    $('status').textContent = isMulti(q) ? `Please select ${q.selectCount} option(s).` : 'Please select an answer.';
+    $('status').className='status';
+    $('explanation').textContent='';
+    return;
+  }
+  checked=true;
+  const correctSorted=[...correctSet].sort((a,b)=>a-b).join(',');
+  const selSorted=[...sel].sort((a,b)=>a-b).join(',');
+  const ok = correctSorted===selSorted;
+  if(ok)score++;
+
+  userAnswers[current]={
+    selectedText: sel.map(i=>shuffledOptions[i].text).join(' | '),
+    correctText: correctSet.map(i=>shuffledOptions[i].text).join(' | '),
+    ok: ok
+  };
+
+  document.querySelectorAll('.option').forEach((el,index)=>{
+    el.querySelector('input').disabled=true;
+    if(correctSet.includes(index))el.classList.add('correct');
+    if(sel.includes(index)&&!correctSet.includes(index))el.classList.add('wrong');
+  });
+
+  $('feedback').classList.add('show');
+  $('status').textContent=ok?'Correct':'Incorrect';
+  $('status').className='status '+(ok?'ok':'bad');
+  $('explanation').textContent=q.explanation;
+  updateLiveScore();
+  $('nextBtn').disabled=false;
+  $('checkBtn').disabled=true;
+}
+
+function nextQuestion(){if(current<questions.length-1){current++;renderQuestion();}else showResults();}
+
+function showResults(){
+  $('progressFill').style.width='100%';
+  $('quizArea').classList.add('hidden');
+  $('results').classList.add('show');
+
+  const percent=Math.round(score/questions.length*100);
+  $('finalScore').textContent=`${score} / ${questions.length} (${percent}%)`;
+  $('finalText').textContent=percent>=85
+    ?'Excellent — you have a strong grasp of Azure storage accounts, redundancy, services, and migration tools.'
+    :percent>=70
+      ?'Good progress. Review the redundancy options and storage services to close the remaining gaps.'
+      :'Revisit this module: storage account types, redundancy (LRS/ZRS/GRS/GZRS), access tiers, and the migration and file-movement tools.';
+
+  $('review').innerHTML='';
+  questions.forEach((q,i)=>{
+    const ua=userAnswers[i];
+    const ok=ua!==null && ua.ok;
+    const correctText = isMulti(q) ? q.answer.map(a=>q.options[a]).join(' | ') : q.options[q.answer];
+    const item=document.createElement('div');
+    item.className='review-item';
+    item.innerHTML=`<strong>${i+1}. ${q.section}</strong><br>${q.question}<br><span style="color:${ok?'var(--correct)':'var(--wrong)'}">${ua===null?'Not answered':(ok?'Correct':'Incorrect')}</span><br>Your answer: ${ua===null?'No answer':ua.selectedText}<br>Correct answer: ${ua===null?correctText:ua.correctText}<br><em>${q.explanation}</em>`;
+    $('review').appendChild(item);
+  });
+}
+
+function hashStr(s){
+  let h1=0xdeadbeef, h2=0x41c6ce57;
+  for(let i=0;i<s.length;i++){
+    const ch=s.charCodeAt(i);
+    h1=Math.imul(h1^ch,2654435761); h2=Math.imul(h2^ch,1597334677);
+  }
+  h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);
+  h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+  return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);
+}
+function todayStrLocal(){ const d=new Date(); d.setHours(0,0,0,0); return d.toISOString().slice(0,10); }
+async function ensureRWPermission(handle){
+  const opts={mode:'readwrite'};
+  if((await handle.queryPermission(opts))==='granted') return true;
+  if((await handle.requestPermission(opts))==='granted') return true;
+  return false;
+}
+function downloadFallbackExport(quizTitle, missed){
+  const payload={quizTitle, date:todayStrLocal(), mistakes:missed};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const safe=quizTitle.replace(/[^\w\-]+/g,'_').slice(0,60);
+  a.href=url; a.download='mistakes_'+safe+'_'+todayStrLocal()+'.json';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+async function exportMistakesToJournal(forceCreate){
+  const quizTitle = document.title || 'AZ-104 Quiz';
+  const missed = [];
+  questions.forEach((q,i)=>{
+    const ua = userAnswers[i];
+    if(!ua || !ua.ok){
+      missed.push({section:q.section, question:q.question, options:q.options, answer:q.answer, selectCount:q.selectCount||null, explanation:q.explanation});
+    }
+  });
+  if(missed.length===0){ alert('Ошибок нет — нечего экспортировать.'); return; }
+  if(!('showOpenFilePicker' in window)){
+    alert('Браузер не поддерживает прямую запись в файл (нужен Chrome/Edge). Скачиваю отдельный файл — импортируйте его вручную в Журнал ошибок.');
+    downloadFallbackExport(quizTitle, missed);
+    return;
+  }
+  let handle;
+  try{
+    if(forceCreate){
+      handle = await window.showSaveFilePicker({suggestedName:'az104-mistakes-journal.json', types:[{description:'Журнал ошибок JSON', accept:{'application/json':['.json']}}]});
+    } else {
+      [handle] = await window.showOpenFilePicker({types:[{description:'Журнал ошибок JSON', accept:{'application/json':['.json']}}]});
+    }
+  }catch(e){ if(e.name!=='AbortError') console.error(e); return; }
+
+  let journal;
+  try{
+    const perm = await ensureRWPermission(handle);
+    if(!perm){ alert('Нет разрешения на запись в файл.'); return; }
+    const file = await handle.getFile();
+    const text = await file.text();
+    journal = text.trim() ? JSON.parse(text) : {mistakes:[]};
+    if(!journal.mistakes || !Array.isArray(journal.mistakes)) journal.mistakes=[];
+  }catch(e){ alert('Не удалось прочитать файл журнала: '+e.message); return; }
+
+  let added=0, reset=0;
+  missed.forEach(q=>{
+    const id = hashStr(quizTitle+'|'+q.section+'|'+q.question);
+    const existing = journal.mistakes.find(m=>m.id===id);
+    if(existing){ existing.box=1; existing.masteredStreak=0; existing.nextReview=todayStrLocal(); reset++; }
+    else{
+      journal.mistakes.push({id, quizTitle, domain:null, section:q.section, question:q.question, options:q.options, answer:q.answer, selectCount:q.selectCount, explanation:q.explanation, box:1, masteredStreak:0, nextReview:todayStrLocal(), firstMissed:todayStrLocal()});
+      added++;
+    }
+  });
+  try{
+    const writable = await handle.createWritable();
+    await writable.write(JSON.stringify(journal,null,2));
+    await writable.close();
+  }catch(e){ alert('Не удалось сохранить журнал: '+e.message); return; }
+  alert(`Готово. Новых вопросов: ${added}, повторно ошиблись: ${reset}.`);
+}
+
+function restart(){current=0;score=0;checked=false;userAnswers=Array(questions.length).fill(null);$('results').classList.remove('show');$('quizArea').classList.remove('hidden');renderQuestion();}
+$('options').addEventListener('change',enforceLimit);$('checkBtn').addEventListener('click',checkAnswer);$('nextBtn').addEventListener('click',nextQuestion);$('restartBtn').addEventListener('click',restart);$('restartBtn2').addEventListener('click',restart);$('exportMistakesBtn').addEventListener('click',()=>exportMistakesToJournal(false));$('createJournalBtn').addEventListener('click',()=>exportMistakesToJournal(true));renderQuestion();
+</script></body></html>

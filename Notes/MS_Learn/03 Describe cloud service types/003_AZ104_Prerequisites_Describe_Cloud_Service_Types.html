@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZ-104 — Describe Cloud Service Types Quiz</title>
+<style>
+:root{--bg:#0b1f2a;--panel:#102b3a;--text:#eef7fb;--muted:#a9c0cc;--accent:#7cc7ff;--accent2:#9ed8ff;--correct:#2ecc71;--wrong:#ff6b6b;--border:#315365}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#081922,#102b3a);color:var(--text);min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:28px}.app{width:min(1050px,100%);background:rgba(16,43,58,.98);border:1px solid var(--border);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}header{padding:28px 32px 18px;border-bottom:1px solid var(--border);background:rgba(8,25,34,.6)}h1{margin:0 0 10px;font-size:26px}.subtitle{color:var(--muted);font-size:15px;line-height:1.5}.progress-wrap{padding:22px 32px 0}.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-bottom:10px}.bar{width:100%;height:8px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .25s ease}main{padding:32px}.section{display:inline-block;color:var(--accent2);background:rgba(124,199,255,.12);border:1px solid rgba(124,199,255,.25);padding:8px 12px;border-radius:999px;font-size:14px;margin-bottom:20px}.question{font-size:24px;line-height:1.45;margin:0 0 26px}.options{display:grid;gap:12px;margin-bottom:24px}.option{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:rgba(8,25,34,.45);cursor:pointer;transition:border-color .15s ease,background .15s ease}.option:hover{border-color:var(--accent);background:rgba(124,199,255,.08)}.option input{margin-top:3px;transform:scale(1.2);accent-color:var(--accent)}.option.correct{border-color:var(--correct);background:rgba(46,204,113,.12)}.option.wrong{border-color:var(--wrong);background:rgba(255,107,107,.12)}.letter{color:var(--accent2);font-weight:bold;width:22px;flex:0 0 auto}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px}button{border:0;border-radius:12px;padding:13px 18px;font-size:16px;font-weight:700;cursor:pointer;background:var(--accent);color:#062131}button.secondary{background:rgba(255,255,255,.12);color:var(--text);border:1px solid var(--border)}button:disabled{opacity:.45;cursor:not-allowed}.feedback{display:none;margin-top:22px;padding:18px;border-radius:14px;border:1px solid var(--border);background:rgba(8,25,34,.55);line-height:1.55}.feedback.show{display:block}.status{font-weight:800;margin-bottom:8px}.ok{color:var(--correct)}.bad{color:var(--wrong)}.results{display:none;padding:32px;line-height:1.55}.results.show{display:block}.score{font-size:42px;font-weight:800;margin:12px 0;color:var(--accent2)}.review{margin-top:24px;display:grid;gap:12px}.review-item{border:1px solid var(--border);border-radius:14px;padding:14px 16px;background:rgba(8,25,34,.45)}.review-item strong{color:var(--accent2)}.hidden{display:none}@media(max-width:640px){body{padding:12px}header,main,.progress-wrap,.results{padding-left:18px;padding-right:18px}.question{font-size:20px}h1{font-size:22px}}
+</style></head>
+<body><div class="app"><header><h1>Introduction to Cloud Infrastructure. Describe Cloud Service Types</h1></header>
+<div id="quizArea"><div class="progress-wrap"><div class="progress-label"><span id="counter"></span><span id="scoreLive"></span></div><div class="bar"><div class="fill" id="progressFill"></div></div></div>
+<main><div class="section" id="section"></div><p class="question" id="question"></p><div class="options" id="options"></div><div class="controls"><button id="checkBtn">Check answer</button><button id="nextBtn" class="secondary" disabled>Next</button><button id="restartBtn" class="secondary">Restart</button></div><div class="feedback" id="feedback"><div class="status" id="status"></div><div id="explanation"></div></div></main></div>
+<div class="results" id="results"><h2>Quiz completed</h2><div class="score" id="finalScore"></div><p id="finalText"></p><button id="restartBtn2">Restart quiz</button><div class="review" id="review"></div></div></div>
+<script>
+const questions = [{"section": "Cloud Service Types Overview", "question": "What do cloud service types determine?", "options": ["How much flexibility and management responsibility you have", "The geographic location of each Azure region", "The billing currency of your subscription", "The default size of a virtual machine"], "answer": 0, "explanation": "Each cloud service type determines the flexibility you have for managing and configuring resources, and how shared responsibility applies."}, {"section": "Cloud Service Types Overview", "question": "Which three cloud service types are covered in this module?", "options": ["IaaS, PaaS, and SaaS", "Public, private, and hybrid cloud", "CapEx, OpEx, and pay-as-you-go", "Compute, storage, and networking"], "answer": 0, "explanation": "This module covers infrastructure as a service (IaaS), platform as a service (PaaS), and software as a service (SaaS)."}, {"section": "Cloud Service Types Overview", "question": "Which cloud service type usually gives the customer the most control?", "options": ["Infrastructure as a Service (IaaS)", "Platform as a Service (PaaS)", "Software as a Service (SaaS)", "A hybrid cloud deployment"], "answer": 0, "explanation": "IaaS is the most flexible category and provides the maximum amount of control over your cloud resources."}, {"section": "Cloud Service Types Overview", "question": "Which cloud service type usually has the lowest operational overhead for the customer?", "options": ["Software as a Service (SaaS)", "Infrastructure as a Service (IaaS)", "Platform as a Service (PaaS)", "A self-managed virtual machine"], "answer": 0, "explanation": "SaaS has the lowest operational overhead; the provider manages almost all of the application stack."}, {"section": "Infrastructure as a Service (IaaS)", "question": "What is Infrastructure as a Service (IaaS)?", "options": ["Renting infrastructure while you manage most of the stack", "A fully developed application delivered to end users", "A platform where the provider manages the middleware", "A model limited to email and messaging apps"], "answer": 0, "explanation": "With IaaS you rent the hardware in a cloud datacenter and manage most of the workload stack yourself."}, {"section": "Infrastructure as a Service (IaaS)", "question": "In an IaaS model, what is the cloud provider responsible for?", "options": ["Hardware, internet connectivity, and physical security", "Your application code and business logic", "Operating system installation and patching", "Database schema design and data governance"], "answer": 0, "explanation": "In IaaS the provider maintains the hardware, network connectivity to the internet, and physical security; you handle the rest."}, {"section": "Infrastructure as a Service (IaaS)", "question": "In IaaS, which of these are typically the customer's responsibility? (Choose three)", "options": ["Operating system installation and maintenance", "Network configuration", "Database and storage configuration", "Physical security of the datacenter"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "With IaaS you're responsible for OS installation/configuration/maintenance, network configuration, and database and storage configuration."}, {"section": "Infrastructure as a Service (IaaS)", "question": "Which statement best describes the IaaS model?", "options": ["You rent hardware and decide what to run on it", "You receive a complete app with no configuration", "You manage user accounts but not the OS", "You are unable to configure operating systems"], "answer": 0, "explanation": "With IaaS you're essentially renting hardware in a cloud datacenter, but what you do with it is up to you."}, {"section": "Infrastructure as a Service (IaaS)", "question": "What trade-off is most associated with IaaS?", "options": ["Maximum flexibility with the largest operational responsibility", "Minimum flexibility with no operational responsibility", "A fully managed app with no platform control", "No ability to migrate existing workloads"], "answer": 0, "explanation": "IaaS gives you maximum flexibility and, with it, the largest operational responsibility of the three models."}, {"section": "Infrastructure as a Service (IaaS)", "question": "Which scenarios are common use cases for IaaS? (Choose two)", "options": ["Lift-and-shift migration from on-premises", "Rapidly spinning up test and dev environments", "Using a hosted, finished email application", "Subscribing to a ready-made expense tracker"], "answer": [0, 1], "selectCount": 2, "explanation": "IaaS suits lift-and-shift migration and testing/development, where you replicate configurations and start or shut down environments rapidly with full control."}, {"section": "Infrastructure as a Service (IaaS)", "question": "Why can IaaS be useful for testing and development?", "options": ["You can rapidly create and shut down controlled environments", "It blocks developers from configuring environments", "It supports finished SaaS applications instead", "It needs new physical servers for each test"], "answer": 0, "explanation": "IaaS lets you rapidly replicate configurations and start up or shut down dev/test environments while keeping complete control."}, {"section": "Platform as a Service (PaaS)", "question": "What is Platform as a Service (PaaS)?", "options": ["A middle ground where the provider runs the platform", "A model where the customer manages physical servers", "A finished application delivered as a product", "A model restricted to private datacenters"], "answer": 0, "explanation": "PaaS is a middle ground between IaaS and SaaS: the provider manages infrastructure and platform components while you focus on apps and data."}, {"section": "Platform as a Service (PaaS)", "question": "In PaaS, which components are typically maintained by the cloud provider? (Choose three)", "options": ["Operating systems", "Middleware", "Development tools and analytics services", "Your application's source code"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "In PaaS the provider maintains the operating systems, middleware, development tools, and analytics services that make up the solution."}, {"section": "Platform as a Service (PaaS)", "question": "In a PaaS scenario, what does the customer usually not have to worry about?", "options": ["Licensing or patching for operating systems and databases", "Writing the application code", "Managing the application data", "Configuring user access policies"], "answer": 0, "explanation": "In PaaS you don't have to worry about licensing or patching for operating systems and databases."}, {"section": "Platform as a Service (PaaS)", "question": "What does the customer primarily focus on in PaaS?", "options": ["Application code, data, and access controls", "Physical datacenter power and cooling", "Replacing failed physical servers", "The provider's internet connection"], "answer": 0, "explanation": "In PaaS you focus on your application code, data, and access controls; some networking and app security settings are shared."}, {"section": "Platform as a Service (PaaS)", "question": "Why is PaaS useful for developers?", "options": ["It gives a dev framework without maintaining the infrastructure", "It requires developers to manage physical servers", "It removes the ability to build custom apps", "It delivers finished email applications instead"], "answer": 0, "explanation": "PaaS provides a complete development environment without the headache of maintaining all the development infrastructure."}, {"section": "Platform as a Service (PaaS)", "question": "Which cloud features can PaaS include to reduce the coding developers must do? (Choose three)", "options": ["Scalability", "High availability", "Multitenant capability", "Physical server replacement"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "PaaS can include scalability, high availability, and multitenant capability, reducing the amount of coding developers must do."}, {"section": "Platform as a Service (PaaS)", "question": "Which scenario fits PaaS analytics or business intelligence services?", "options": ["Analyzing data and predicting outcomes for decisions", "Replacing physical network hardware in a datacenter", "Using a finished, hosted email client", "Applying every OS patch by hand on a VM"], "answer": 0, "explanation": "PaaS analytics/BI tools let teams analyze and mine data, find insights and patterns, and predict outcomes to improve decisions."}, {"section": "Platform as a Service (PaaS)", "question": "Compared with IaaS, what operational benefit does PaaS provide?", "options": ["Less need to manage operating systems and patching", "More responsibility for physical hosts", "More manual datacenter maintenance", "Less provider involvement in the platform"], "answer": 0, "explanation": "PaaS shifts operating systems, middleware, and platform patching to the provider, reducing your operational burden versus IaaS."}, {"section": "Software as a Service (SaaS)", "question": "What is Software as a Service (SaaS)?", "options": ["A model where you use a fully developed application", "A model where you manage VM operating systems", "A platform where you configure middleware and runtimes", "A physical datacenter hosting arrangement"], "answer": 0, "explanation": "With SaaS you're essentially renting or using a fully developed application."}, {"section": "Software as a Service (SaaS)", "question": "Which examples are commonly associated with SaaS? (Choose three)", "options": ["Email and messaging applications", "Financial and expense-tracking software", "Productivity applications", "Bare virtual machines you patch yourself"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "Common SaaS examples include email and messaging, productivity applications, and finance/expense tracking software."}, {"section": "Software as a Service (SaaS)", "question": "Which statement best describes SaaS from a product perspective?", "options": ["It is the most complete cloud service model", "It gives the most control over operating systems", "It is the same as buying physical servers", "It needs you to maintain middleware and runtimes"], "answer": 0, "explanation": "SaaS is the most complete cloud service model from a product perspective."}, {"section": "Software as a Service (SaaS)", "question": "Why is SaaS usually the easiest service model to get up and running?", "options": ["It needs the least technical knowledge to use", "It needs you to install and patch the OS", "It needs a full app platform built first", "It needs datacenter hardware planning"], "answer": 0, "explanation": "SaaS is the easiest to get running and requires the least amount of technical knowledge or expertise to fully employ."}, {"section": "Software as a Service (SaaS)", "question": "What does the cloud provider manage in SaaS?", "options": ["Almost all of the application stack", "Just the physical building, nothing else", "Your data classification labels alone", "Your endpoint devices alone"], "answer": 0, "explanation": "In SaaS the provider manages almost all of the application stack, including infrastructure, platform, and application maintenance."}, {"section": "Software as a Service (SaaS)", "question": "Which of these does the customer primarily manage in SaaS? (Choose three)", "options": ["Data", "Identity and access settings", "Device access posture", "Operating system patching"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "In SaaS you primarily manage your data, identity and access settings, and device access posture."}, {"section": "Software as a Service (SaaS)", "question": "What is the main trade-off of SaaS?", "options": ["The least flexibility but the lowest operational overhead", "Maximum control but maximum operational burden", "A need to manage operating systems and middleware", "Usefulness limited to lift-and-shift migration"], "answer": 0, "explanation": "SaaS may be the least flexible model, but it has the lowest operational overhead for customers."}, {"section": "Responsibility Comparison", "question": "Which service model places the most operational responsibility on the customer?", "options": ["IaaS", "PaaS", "SaaS", "A hosted productivity suite"], "answer": 0, "explanation": "IaaS gives maximum control and therefore the largest operational responsibility for the customer."}, {"section": "Responsibility Comparison", "question": "Which service model places the most responsibility on the cloud provider?", "options": ["SaaS", "IaaS", "PaaS", "A self-managed virtual machine"], "answer": 0, "explanation": "SaaS places the most responsibility on the provider, who manages almost the entire stack."}, {"section": "Responsibility Comparison", "question": "Which service model is the middle ground between IaaS and SaaS?", "options": ["PaaS", "Private cloud", "Multicloud", "Hybrid cloud"], "answer": 0, "explanation": "PaaS is the middle ground between renting infrastructure (IaaS) and using a complete application (SaaS)."}, {"section": "Responsibility Comparison", "question": "As you move from IaaS to PaaS to SaaS, what generally happens to customer operational responsibility?", "options": ["It decreases", "It increases", "It stays exactly the same", "It shifts toward physical security"], "answer": 0, "explanation": "Moving IaaS → PaaS → SaaS shifts more of the stack to the provider, so the customer's operational responsibility decreases."}, {"section": "Scenario-Based Questions", "question": "A team needs full control over the OS, installed software, and security settings on cloud-hosted infrastructure. Which model fits best?", "options": ["IaaS", "PaaS", "SaaS", "A managed productivity suite"], "answer": 0, "explanation": "When you need maximum control over operating systems, installed software, and security on rented infrastructure, IaaS is the right fit."}, {"section": "Scenario-Based Questions", "question": "A team wants to build a custom web app without managing OS patches, middleware, or dev infrastructure. Which model fits best?", "options": ["PaaS", "IaaS", "SaaS", "On-premises hosting"], "answer": 0, "explanation": "PaaS provides a managed development platform so the team can build the app without maintaining the underlying infrastructure."}, {"section": "Scenario-Based Questions", "question": "A small business needs a ready-to-use expense-tracking app and doesn't want to manage servers, the OS, or app updates. Which model fits best?", "options": ["SaaS", "IaaS", "PaaS", "Self-managed virtual machines"], "answer": 0, "explanation": "A finished, ready-to-use application with provider-managed updates is a classic SaaS scenario."}];
+let current=0, score=0, checked=false, userAnswers=Array(questions.length).fill(null);
+let shuffledOptions = [];
+let currentCorrectSet = [];
+const $=id=>document.getElementById(id);
+
+function isMulti(q){return Array.isArray(q.answer);}
+
+function shuffleArray(array){
+  const result = [...array];
+  for(let i=result.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function updateLiveScore(){
+  const percent = current === 0 && score === 0 ? 0 : Math.round((score / questions.length) * 100);
+  $('scoreLive').textContent = `Score: ${score} / ${questions.length} (${percent}%)`;
+}
+function renderQuestion(){
+  const q=questions[current];
+  checked=false;
+  const multi=isMulti(q);
+  const correctOriginal = multi ? q.answer.slice() : [q.answer];
+  shuffledOptions = shuffleArray(q.options.map((text, originalIndex)=>({text, originalIndex})));
+  currentCorrectSet = shuffledOptions
+    .map((o,idx)=>({idx, orig:o.originalIndex}))
+    .filter(o=>correctOriginal.includes(o.orig))
+    .map(o=>o.idx);
+
+  $('counter').textContent=`Question ${current+1} of ${questions.length}`;
+  updateLiveScore();
+  $('progressFill').style.width=`${(current/questions.length)*100}%`;
+  $('section').textContent=q.section;
+  $('question').innerHTML=q.question;
+  $('feedback').classList.remove('show');
+  $('status').textContent='';
+  $('explanation').textContent='';
+  $('nextBtn').disabled=true;
+  $('checkBtn').disabled=false;
+  $('options').innerHTML='';
+
+  const inputType = multi ? 'checkbox' : 'radio';
+  shuffledOptions.forEach((option,index)=>{
+    const label=document.createElement('label');
+    label.className='option';
+    label.innerHTML=`<input type="${inputType}" name="answer" value="${index}"><span class="letter">${String.fromCharCode(65+index)}.</span><span>${option.text}</span>`;
+    $('options').appendChild(label);
+  });
+
+  if(multi){
+    const need=q.selectCount;
+    const inputs=()=>Array.from(document.querySelectorAll('input[name="answer"]'));
+    inputs().forEach(inp=>{
+      inp.addEventListener('change',()=>{
+        const chosen=inputs().filter(i=>i.checked);
+        if(chosen.length>=need){
+          inputs().forEach(i=>{if(!i.checked)i.disabled=true;});
+        }else{
+          inputs().forEach(i=>{i.disabled=false;});
+        }
+      });
+    });
+  }
+}
+function selectedIndexes(){
+  return Array.from(document.querySelectorAll('input[name="answer"]:checked')).map(i=>Number(i.value));
+}
+function checkAnswer(){
+  if(checked)return;
+  const q=questions[current];
+  const multi=isMulti(q);
+  const selected=selectedIndexes();
+  if(selected.length===0 || (multi && selected.length<q.selectCount)){
+    $('feedback').classList.add('show');
+    $('status').textContent = multi ? `Выберите ${q.selectCount} варианта.` : 'Выберите вариант ответа.';
+    $('status').className='status';
+    $('explanation').textContent='';
+    return;
+  }
+  checked=true;
+  const correctSetSorted=[...currentCorrectSet].sort((a,b)=>a-b);
+  const selectedSorted=[...selected].sort((a,b)=>a-b);
+  const ok = correctSetSorted.length===selectedSorted.length &&
+             correctSetSorted.every((v,i)=>v===selectedSorted[i]);
+  if(ok)score++;
+
+  const selectedText = selected.map(i=>shuffledOptions[i].text).join('; ');
+  const correctText = currentCorrectSet.map(i=>shuffledOptions[i].text).join('; ');
+  userAnswers[current]={selectedText, correctText, ok};
+
+  document.querySelectorAll('.option').forEach((el,index)=>{
+    el.querySelector('input').disabled=true;
+    if(currentCorrectSet.includes(index))el.classList.add('correct');
+    if(selected.includes(index)&&!currentCorrectSet.includes(index))el.classList.add('wrong');
+  });
+
+  $('feedback').classList.add('show');
+  $('status').textContent=ok?'Correct':'Incorrect';
+  $('status').className='status '+(ok?'ok':'bad');
+  $('explanation').textContent=q.explanation;
+  updateLiveScore();
+  $('nextBtn').disabled=false;
+  $('checkBtn').disabled=true;
+}
+function nextQuestion(){if(current<questions.length-1){current++;renderQuestion();}else showResults();}
+function showResults(){
+  $('progressFill').style.width='100%';
+  $('quizArea').classList.add('hidden');
+  $('results').classList.add('show');
+
+  const percent=Math.round(score/questions.length*100);
+  $('finalScore').textContent=`${score} / ${questions.length} (${percent}%)`;
+  $('finalText').textContent=percent>=85
+    ?'Отличный результат. Материал раздела Describe cloud service types усвоен.'
+    :percent>=70
+      ?'Хороший результат, но стоит повторить ошибки и пройти вопросник ещё раз.'
+      :'Нужно повторить раздел Describe cloud service types и заново пройти вопросник.';
+
+  $('review').innerHTML='';
+
+  questions.forEach((q,i)=>{
+    const ua=userAnswers[i];
+    const ok=ua!==null && ua.ok;
+    const correctDisplay = Array.isArray(q.answer)
+      ? q.answer.map(a=>q.options[a]).join('; ')
+      : q.options[q.answer];
+
+    const item=document.createElement('div');
+    item.className='review-item';
+    item.innerHTML=`<strong>${i+1}. ${q.section}</strong><br>${q.question}<br><span style="color:${ok?'var(--correct)':'var(--wrong)'}">${ok?'Correct':'Incorrect'}</span><br>Your answer: ${ua===null?'No answer':ua.selectedText}<br>Correct answer: ${ua===null?correctDisplay:ua.correctText}<br><em>${q.explanation}</em>`;
+    $('review').appendChild(item);
+  });
+}
+function restart(){current=0;score=0;checked=false;userAnswers=Array(questions.length).fill(null);$('results').classList.remove('show');$('quizArea').classList.remove('hidden');renderQuestion();}
+$('checkBtn').addEventListener('click',checkAnswer);$('nextBtn').addEventListener('click',nextQuestion);$('restartBtn').addEventListener('click',restart);$('restartBtn2').addEventListener('click',restart);renderQuestion();
+</script></body></html>

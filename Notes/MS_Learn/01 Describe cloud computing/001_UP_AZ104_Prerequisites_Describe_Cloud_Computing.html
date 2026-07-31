@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZ-104 — Describe Cloud Computing Quiz</title>
+<style>
+:root{--bg:#0b1f2a;--panel:#102b3a;--text:#eef7fb;--muted:#a9c0cc;--accent:#7cc7ff;--accent2:#9ed8ff;--correct:#2ecc71;--wrong:#ff6b6b;--border:#315365}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#081922,#102b3a);color:var(--text);min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:28px}.app{width:min(1050px,100%);background:rgba(16,43,58,.98);border:1px solid var(--border);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}header{padding:28px 32px 18px;border-bottom:1px solid var(--border);background:rgba(8,25,34,.6)}h1{margin:0 0 10px;font-size:26px}.subtitle{color:var(--muted);font-size:15px;line-height:1.5}.progress-wrap{padding:22px 32px 0}.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-bottom:10px}.bar{width:100%;height:8px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .25s ease}main{padding:32px}.section{display:inline-block;color:var(--accent2);background:rgba(124,199,255,.12);border:1px solid rgba(124,199,255,.25);padding:8px 12px;border-radius:999px;font-size:14px;margin-bottom:20px}.question{font-size:24px;line-height:1.45;margin:0 0 26px}.options{display:grid;gap:12px;margin-bottom:24px}.option{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:rgba(8,25,34,.45);cursor:pointer;transition:border-color .15s ease,background .15s ease}.option:hover{border-color:var(--accent);background:rgba(124,199,255,.08)}.option input{margin-top:3px;transform:scale(1.2);accent-color:var(--accent)}.option.correct{border-color:var(--correct);background:rgba(46,204,113,.12)}.option.wrong{border-color:var(--wrong);background:rgba(255,107,107,.12)}.letter{color:var(--accent2);font-weight:bold;width:22px;flex:0 0 auto}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px}button{border:0;border-radius:12px;padding:13px 18px;font-size:16px;font-weight:700;cursor:pointer;background:var(--accent);color:#062131}button.secondary{background:rgba(255,255,255,.12);color:var(--text);border:1px solid var(--border)}button:disabled{opacity:.45;cursor:not-allowed}.feedback{display:none;margin-top:22px;padding:18px;border-radius:14px;border:1px solid var(--border);background:rgba(8,25,34,.55);line-height:1.55}.feedback.show{display:block}.status{font-weight:800;margin-bottom:8px}.ok{color:var(--correct)}.bad{color:var(--wrong)}.results{display:none;padding:32px;line-height:1.55}.results.show{display:block}.score{font-size:42px;font-weight:800;margin:12px 0;color:var(--accent2)}.review{margin-top:24px;display:grid;gap:12px}.review-item{border:1px solid var(--border);border-radius:14px;padding:14px 16px;background:rgba(8,25,34,.45)}.review-item strong{color:var(--accent2)}.hidden{display:none}@media(max-width:640px){body{padding:12px}header,main,.progress-wrap,.results{padding-left:18px;padding-right:18px}.question{font-size:20px}h1{font-size:22px}}
+</style></head>
+<body><div class="app"><header><h1>Introduction to Cloud Infrastructure. Describe Cloud Computing</h1></header>
+<div id="quizArea"><div class="progress-wrap"><div class="progress-label"><span id="counter"></span><span id="scoreLive"></span></div><div class="bar"><div class="fill" id="progressFill"></div></div></div>
+<main><div class="section" id="section"></div><p class="question" id="question"></p><div class="options" id="options"></div><div class="controls"><button id="checkBtn">Check answer</button><button id="nextBtn" class="secondary" disabled>Next</button><button id="restartBtn" class="secondary">Restart</button></div><div class="feedback" id="feedback"><div class="status" id="status"></div><div id="explanation"></div></div></main></div>
+<div class="results" id="results"><h2>Quiz completed</h2><div class="score" id="finalScore"></div><p id="finalText"></p><div class="controls"><button id="restartBtn2">Restart quiz</button><button id="exportMistakesBtn" class="secondary">Export mistakes to journal</button><button id="createJournalBtn" class="secondary">No journal yet — create it</button></div><div class="review" id="review"></div></div></div>
+<script>
+const questions = [{"section": "What is cloud computing", "question": "What is cloud computing?", "options": ["Delivery of computing services over the internet", "Delivery of storage services over the internet", "Delivery of websites accessible via the internet", "Purchase of physical servers in a datacenter"], "answer": 0, "explanation": "Cloud computing is the delivery of computing services over the internet, including compute, storage, databases, networking, IoT, ML, and AI."}, {"section": "What is cloud computing", "question": "Which of the following are common examples of cloud computing services? (Choose three)", "options": ["Virtual machines", "Databases", "Networking", "Physical datacenter construction", "Hardware procurement cycles"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "Cloud computing delivers common IT infrastructure such as virtual machines, storage, databases, and networking, and expands it with IoT, ML, and AI."}, {"section": "What is cloud computing", "question": "Why can cloud computing expand IT infrastructure quickly?", "options": ["Resources are provisioned on demand over the internet", "New servers must be bought for each workload", "Networking is no longer needed for cloud apps", "Cloud resources are provided without any charge"], "answer": 0, "explanation": "Cloud resources can be provisioned on demand without waiting for physical hardware procurement and installation."}, {"section": "What is cloud computing", "question": "A retail team expects high traffic during a seasonal launch. What is the cloud-aligned approach?", "options": ["Buy additional physical servers several months ahead", "Deploy extra compute for the launch, then scale down", "Move every user to a private datacenter instead", "Disable the application during the peak period"], "answer": 1, "explanation": "Cloud computing allows temporary scale-out during peak demand and scale-in afterward, aligning cost with actual usage."}, {"section": "What is cloud computing", "question": "How does cloud computing change infrastructure planning?", "options": ["From on-demand provisioning to long procurement", "From long procurement to on-demand provisioning", "From shared responsibility to full provider control", "From operational expense to capital expense"], "answer": 1, "explanation": "Cloud computing shifts planning from long procurement cycles to on-demand provisioning."}, {"section": "What is cloud computing", "question": "What is one benefit of global reach in cloud computing?", "options": ["Services can be placed closer to users", "All resources are pinned to one country", "Customers must build regional datacenters", "Applications lose regional resilience"], "answer": 0, "explanation": "Cloud platforms can place services closer to users and help design for regional resilience without building physical datacenters."}, {"section": "Shared Responsibility Model", "question": "What does the shared responsibility model describe?", "options": ["How costs are divided between departments", "How responsibilities split between provider and customer", "How virtual machines are billed per hour", "How applications are deployed into containers"], "answer": 1, "explanation": "The shared responsibility model explains which responsibilities belong to the provider and which remain with the customer."}, {"section": "Shared Responsibility Model", "question": "Who is responsible for physical security, power, cooling, and network connectivity?", "options": ["The customer", "The cloud provider", "The end users", "The application developers"], "answer": 1, "explanation": "The cloud provider is responsible for the physical datacenter, physical network, and physical hosts."}, {"section": "Shared Responsibility Model", "question": "Regardless of service model, which items always stay the customer's responsibility? (Choose three)", "options": ["Data and information stored in the cloud", "Devices allowed to connect to the cloud", "Accounts and identities in the environment", "The physical hosts in the datacenter", "The physical network fabric"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "The customer is always responsible for stored data, the devices that connect, and the accounts and identities, no matter the service model."}, {"section": "Shared Responsibility Model", "question": "A company uses a managed cloud SQL database. Who maintains the database platform?", "options": ["The customer", "The cloud provider", "The application user", "The network provider"], "answer": 1, "explanation": "With a managed cloud SQL database, the provider maintains the database platform, while the customer remains responsible for the data."}, {"section": "Shared Responsibility Model", "question": "A company installs SQL Server on an Azure virtual machine. Who handles its patches and updates?", "options": ["Microsoft Entra ID", "The customer", "The physical datacenter team", "The cloud provider"], "answer": 1, "explanation": "When SQL Server is installed on an Azure VM (IaaS), the customer is responsible for database patches and updates."}, {"section": "Shared Responsibility Model", "question": "Which cloud service type places the most responsibility on the customer?", "options": ["IaaS", "PaaS", "SaaS", "Hybrid cloud"], "answer": 0, "explanation": "IaaS places the most responsibility on the customer; the provider covers physical security, power, and connectivity."}, {"section": "Shared Responsibility Model", "question": "Which cloud service type places most responsibility with the provider?", "options": ["IaaS", "PaaS", "SaaS", "Private cloud"], "answer": 2, "explanation": "SaaS places most responsibility with the provider."}, {"section": "Shared Responsibility Model", "question": "Responsibility for which of these depends on the chosen service model? (Choose three)", "options": ["Operating systems", "Network controls", "Applications", "The physical datacenter", "The physical hosts"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "Operating systems, network controls, applications, identity and access, and infrastructure depend on the service model; the physical datacenter and hosts always belong to the provider."}, {"section": "Shared Responsibility Model", "question": "Under PaaS and SaaS, how is identity and access typically handled?", "options": ["Entirely owned by the cloud provider", "Shared: customer manages users, provider runs the platform", "Entirely owned by the customer in all cases", "Not applicable to PaaS or SaaS workloads"], "answer": 1, "explanation": "Identity and access is shared in PaaS and SaaS: you manage users, roles, and policies, while the provider runs the authentication platform such as Microsoft Entra ID."}, {"section": "Cloud Models", "question": "What do cloud models define?", "options": ["The billing currency of cloud resources", "The deployment type of cloud resources", "The programming language used in Azure", "The number of users in a tenant"], "answer": 1, "explanation": "Cloud models define the deployment type of cloud resources."}, {"section": "Cloud Models", "question": "What are the three main cloud models?", "options": ["Small, medium, and large", "Private, public, and hybrid", "Compute, storage, and networking", "IaaS, PaaS, and SaaS"], "answer": 1, "explanation": "The three main cloud deployment models are private, public, and hybrid."}, {"section": "Cloud Models", "question": "What is a private cloud?", "options": ["A cloud environment used by a single entity", "A cloud environment open to the public", "A cloud running only on the public internet", "A cloud environment without security controls"], "answer": 0, "explanation": "A private cloud is dedicated to a single organization or entity."}, {"section": "Cloud Models", "question": "What is a public cloud?", "options": ["A cloud hosted in the customer's own office", "A cloud built and maintained by a third party", "A cloud dedicated to one organization", "A cloud with no shared physical resources"], "answer": 1, "explanation": "A public cloud is built, controlled, and maintained by a third-party cloud provider, with general public availability."}, {"section": "Cloud Models", "question": "What is a hybrid cloud?", "options": ["An environment combining public and private clouds", "A private datacenter with no internet access", "A deployment that uses a single provider", "A model that drops all security requirements"], "answer": 0, "explanation": "A hybrid cloud combines public and private clouds in an interconnected environment."}, {"section": "Cloud Models", "question": "Which cloud model is described as providing the most flexibility?", "options": ["Public cloud", "Private cloud", "Hybrid cloud", "On-premises datacenter"], "answer": 2, "explanation": "Hybrid cloud provides the most flexibility because organizations decide where to run each workload."}, {"section": "Cloud Models", "question": "Which cloud model requires hardware to be purchased for startup and maintenance?", "options": ["Public cloud", "Private cloud", "Software as a Service", "Pay-as-you-go cloud"], "answer": 1, "explanation": "Private cloud requires hardware purchase for startup and ongoing maintenance."}, {"section": "Cloud Models", "question": "Which cloud model has no capital expenditures to scale up?", "options": ["Public cloud", "Private cloud", "Traditional datacenter", "On-premises datacenter"], "answer": 0, "explanation": "Public cloud lets you scale up with no capital expenditure on hardware."}, {"section": "Cloud Models", "question": "A company keeps sensitive workloads in its own datacenter but uses Azure for temporary peak demand. Which model fits?", "options": ["Public cloud", "Private cloud", "Hybrid cloud", "Multicloud strategy"], "answer": 2, "explanation": "Hybrid cloud lets private workloads stay private while public cloud resources absorb temporary demand."}, {"section": "Multicloud, Azure Arc, Azure VMware Solution", "question": "What is multicloud?", "options": ["Use of multiple public cloud providers", "Use of a single private cloud", "Use of Azure subscriptions in one tenant", "Use of SaaS applications exclusively"], "answer": 0, "explanation": "Multicloud means using two or more public cloud providers."}, {"section": "Multicloud, Azure Arc, Azure VMware Solution", "question": "Why might an organization adopt a multicloud strategy?", "options": ["To use different features from different providers", "To stop managing security entirely", "To remove every cloud-related cost", "To avoid using public cloud at all"], "answer": 0, "explanation": "Organizations may use multiple providers for different features or as part of migrating between providers."}, {"section": "Multicloud, Azure Arc, Azure VMware Solution", "question": "What is Azure Arc used for?", "options": ["Managing environments across cloud and on-premises", "Replacing all virtual machines with containers", "Purchasing cloud licenses and subscriptions", "Creating Azure storage accounts only"], "answer": 0, "explanation": "Azure Arc helps manage environments across public cloud, private cloud, hybrid, and multicloud."}, {"section": "Multicloud, Azure Arc, Azure VMware Solution", "question": "A company runs Azure, an on-premises datacenter, and a second public cloud, and wants unified management. What fits?", "options": ["Azure Arc", "Azure VMware Solution", "Azure Pricing Calculator", "Azure Virtual Network"], "answer": 0, "explanation": "Azure Arc supports unified management across public cloud, private cloud, hybrid, and multicloud environments."}, {"section": "Multicloud, Azure Arc, Azure VMware Solution", "question": "What does Azure VMware Solution allow you to do?", "options": ["Run VMware workloads inside Azure", "Replace Microsoft Entra ID", "Manage only Azure Arc servers", "Create Microsoft 365 user accounts"], "answer": 0, "explanation": "Azure VMware Solution lets organizations run VMware workloads in Azure with integration and scalability."}, {"section": "Multicloud, Azure Arc, Azure VMware Solution", "question": "A company runs many VMware workloads in a private cloud and wants to move them to Azure with minimal change. What should it consider?", "options": ["Azure VMware Solution", "Azure Arc by itself", "Azure DNS zones", "Azure Storage Explorer"], "answer": 0, "explanation": "Azure VMware Solution supports running VMware workloads in Azure with seamless integration and scalability."}, {"section": "Consumption-Based Model", "question": "What does the consumption-based model mean?", "options": ["You pay for all capacity in advance", "You pay for the resources you actually use", "You buy physical servers before using Azure", "You pay a flat fee per user account"], "answer": 1, "explanation": "The consumption-based model means paying for the resources used, and releasing them when no longer needed."}, {"section": "Consumption-Based Model", "question": "Which of these are benefits of the consumption-based model? (Choose three)", "options": ["No upfront cost for hardware", "Add resources when demand increases", "Release resources when demand decreases", "A requirement to maintain physical datacenters", "A mandatory long-term hardware purchase"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "The model removes upfront hardware costs and lets you add resources as demand rises and release them as it falls."}, {"section": "Consumption-Based Model", "question": "Why are cloud services usually classified as an operational expense?", "options": ["They are bought as physical assets upfront", "They are paid for as they are consumed", "They depreciate like owned hardware", "They require a datacenter to be built"], "answer": 1, "explanation": "Because you pay for cloud services as you consume them, cloud computing is classified as an operational expense (OpEx)."}, {"section": "CapEx and OpEx", "question": "What is capital expenditure (CapEx)?", "options": ["Up-front spending on physical infrastructure", "Ongoing monthly usage of cloud services", "The cost of real-time monitoring", "The cost of end-user training"], "answer": 0, "explanation": "CapEx is up-front spending on physical infrastructure such as servers, network hardware, and datacenter space."}, {"section": "CapEx and OpEx", "question": "What is operational expenditure (OpEx)?", "options": ["Ongoing spending on services over time", "Buying physical servers in advance", "Building a new physical datacenter", "Purchasing land for infrastructure"], "answer": 0, "explanation": "OpEx is ongoing spending on services over time."}, {"section": "CapEx and OpEx", "question": "A company buys servers, network hardware, and datacenter space before deploying an app. What type of expense is this?", "options": ["Capital expenditure", "Operational expenditure", "Consumption-based billing", "Pay-as-you-go billing"], "answer": 0, "explanation": "Up-front physical infrastructure spending is capital expenditure (CapEx)."}, {"section": "Capacity Planning", "question": "What happens if you overestimate resource needs in a traditional datacenter?", "options": ["You overspend on idle infrastructure", "The provider refunds unused servers", "The workload becomes serverless", "Excess resources are released for you"], "answer": 0, "explanation": "Overestimating capacity leads to wasted spending on infrastructure that sits idle."}, {"section": "Capacity Planning", "question": "What happens if you underestimate resource needs in a traditional datacenter?", "options": ["Applications may suffer degraded performance", "Operating costs always decrease", "New hardware appears instantly", "The provider patches your servers"], "answer": 0, "explanation": "Underestimating capacity can cause degraded application performance."}, {"section": "Capacity Planning", "question": "In a traditional datacenter, what is typically needed to fix insufficient capacity?", "options": ["Ordering, installing, and provisioning more hardware", "Switching on pay-as-you-go billing", "Reassigning Microsoft Entra ID roles", "Creating a new public cloud tenant"], "answer": 0, "explanation": "Traditional capacity increases require procuring, installing, and provisioning additional hardware, power, and cooling."}, {"section": "Capacity Planning", "question": "How does a cloud-based model handle capacity planning?", "options": ["Resources are adjusted to match real demand", "Capacity is purchased five years ahead", "Hardware is installed manually each time", "Applications are unable to scale"], "answer": 0, "explanation": "Cloud capacity can be adjusted to match actual demand, paying only for what is used."}, {"section": "Capacity Planning", "question": "What does it mean to scale out during peak demand?", "options": ["Add more resources to handle the load", "Reduce CPU on a single machine", "Purchase land for a new datacenter", "Delete the running cloud resources"], "answer": 0, "explanation": "Scaling out means adding more resource instances during peak demand."}, {"section": "Cloud Pricing", "question": "What pricing model do cloud providers commonly use?", "options": ["Pay-as-you-go", "Hardware-first purchase", "One-time datacenter fee", "Unlimited free usage"], "answer": 0, "explanation": "Cloud providers typically use a pay-as-you-go pricing model."}, {"section": "Cloud Pricing", "question": "Pay-as-you-go pricing is described as helping you do which of the following? (Choose three)", "options": ["Plan and manage operating costs", "Run infrastructure more efficiently", "Scale as workload needs change", "Build a private datacenter faster", "Eliminate the need for identity management"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "Pay-as-you-go helps you plan and manage operating costs, run infrastructure more efficiently, and scale as workload needs change."}, {"section": "Cloud Pricing", "question": "In cloud computing, who maintains underlying power, cooling, hardware, and networking?", "options": ["The cloud provider", "Each application user", "The customer's finance team", "The software developer"], "answer": 0, "explanation": "The provider maintains underlying infrastructure so customers can focus on business problems."}, {"section": "Cloud Pricing", "question": "A workload has unpredictable demand and the company wants to avoid paying for idle capacity. Which approach fits best?", "options": ["Pay-as-you-go pricing", "Buying maximum capacity ahead", "A fixed hardware purchase", "Turning off all scaling"], "answer": 0, "explanation": "Pay-as-you-go aligns cost with actual resource consumption, avoiding payment for idle capacity."}, {"section": "Cloud Pricing", "question": "Which statement best describes cloud pricing?", "options": ["You pay for maximum possible usage", "You typically pay for services you consume", "You buy all hardware before starting", "Cloud pricing cannot support scaling"], "answer": 1, "explanation": "Cloud pricing is typically based on the services you consume."}];
+let current=0, score=0, checked=false, userAnswers=Array(questions.length).fill(null);
+let shuffledOptions = [];
+let currentCorrectSet = [];
+const $=id=>document.getElementById(id);
+
+function isMulti(q){return Array.isArray(q.answer);}
+
+function shuffleArray(array){
+  const result = [...array];
+  for(let i=result.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function updateLiveScore(){
+  const percent = current === 0 && score === 0 ? 0 : Math.round((score / questions.length) * 100);
+  $('scoreLive').textContent = `Score: ${score} / ${questions.length} (${percent}%)`;
+}
+function renderQuestion(){
+  const q=questions[current];
+  checked=false;
+  const multi=isMulti(q);
+  const correctOriginal = multi ? q.answer.slice() : [q.answer];
+  shuffledOptions = shuffleArray(q.options.map((text, originalIndex)=>({text, originalIndex})));
+  currentCorrectSet = shuffledOptions
+    .map((o,idx)=>({idx, orig:o.originalIndex}))
+    .filter(o=>correctOriginal.includes(o.orig))
+    .map(o=>o.idx);
+
+  $('counter').textContent=`Question ${current+1} of ${questions.length}`;
+  updateLiveScore();
+  $('progressFill').style.width=`${(current/questions.length)*100}%`;
+  $('section').textContent=q.section;
+  $('question').innerHTML=q.question;
+  $('feedback').classList.remove('show');
+  $('status').textContent='';
+  $('explanation').textContent='';
+  $('nextBtn').disabled=true;
+  $('checkBtn').disabled=false;
+  $('options').innerHTML='';
+
+  const inputType = multi ? 'checkbox' : 'radio';
+  shuffledOptions.forEach((option,index)=>{
+    const label=document.createElement('label');
+    label.className='option';
+    label.innerHTML=`<input type="${inputType}" name="answer" value="${index}"><span class="letter">${String.fromCharCode(65+index)}.</span><span>${option.text}</span>`;
+    $('options').appendChild(label);
+  });
+
+  if(multi){
+    const need=q.selectCount;
+    const inputs=()=>Array.from(document.querySelectorAll('input[name="answer"]'));
+    inputs().forEach(inp=>{
+      inp.addEventListener('change',()=>{
+        const chosen=inputs().filter(i=>i.checked);
+        if(chosen.length>=need){
+          inputs().forEach(i=>{if(!i.checked)i.disabled=true;});
+        }else{
+          inputs().forEach(i=>{i.disabled=false;});
+        }
+      });
+    });
+  }
+}
+function selectedIndexes(){
+  return Array.from(document.querySelectorAll('input[name="answer"]:checked')).map(i=>Number(i.value));
+}
+function checkAnswer(){
+  if(checked)return;
+  const q=questions[current];
+  const multi=isMulti(q);
+  const selected=selectedIndexes();
+  if(selected.length===0 || (multi && selected.length<q.selectCount)){
+    $('feedback').classList.add('show');
+    $('status').textContent = multi ? `Выберите ${q.selectCount} варианта.` : 'Выберите вариант ответа.';
+    $('status').className='status';
+    $('explanation').textContent='';
+    return;
+  }
+  checked=true;
+  const correctSetSorted=[...currentCorrectSet].sort((a,b)=>a-b);
+  const selectedSorted=[...selected].sort((a,b)=>a-b);
+  const ok = correctSetSorted.length===selectedSorted.length &&
+             correctSetSorted.every((v,i)=>v===selectedSorted[i]);
+  if(ok)score++;
+
+  const selectedText = selected.map(i=>shuffledOptions[i].text).join('; ');
+  const correctText = currentCorrectSet.map(i=>shuffledOptions[i].text).join('; ');
+  userAnswers[current]={selectedText, correctText, ok};
+
+  document.querySelectorAll('.option').forEach((el,index)=>{
+    el.querySelector('input').disabled=true;
+    if(currentCorrectSet.includes(index))el.classList.add('correct');
+    if(selected.includes(index)&&!currentCorrectSet.includes(index))el.classList.add('wrong');
+  });
+
+  $('feedback').classList.add('show');
+  $('status').textContent=ok?'Correct':'Incorrect';
+  $('status').className='status '+(ok?'ok':'bad');
+  $('explanation').textContent=q.explanation;
+  updateLiveScore();
+  $('nextBtn').disabled=false;
+  $('checkBtn').disabled=true;
+}
+function nextQuestion(){if(current<questions.length-1){current++;renderQuestion();}else showResults();}
+function showResults(){
+  $('progressFill').style.width='100%';
+  $('quizArea').classList.add('hidden');
+  $('results').classList.add('show');
+
+  const percent=Math.round(score/questions.length*100);
+  $('finalScore').textContent=`${score} / ${questions.length} (${percent}%)`;
+  $('finalText').textContent=percent>=85
+    ?'Отличный результат. Материал раздела Describe cloud computing усвоен.'
+    :percent>=70
+      ?'Хороший результат, но стоит повторить ошибки и пройти вопросник ещё раз.'
+      :'Нужно повторить раздел Describe cloud computing и заново пройти вопросник.';
+
+  $('review').innerHTML='';
+
+  questions.forEach((q,i)=>{
+    const ua=userAnswers[i];
+    const ok=ua!==null && ua.ok;
+    const correctDisplay = Array.isArray(q.answer)
+      ? q.answer.map(a=>q.options[a]).join('; ')
+      : q.options[q.answer];
+
+    const item=document.createElement('div');
+    item.className='review-item';
+    item.innerHTML=`<strong>${i+1}. ${q.section}</strong><br>${q.question}<br><span style="color:${ok?'var(--correct)':'var(--wrong)'}">${ok?'Correct':'Incorrect'}</span><br>Your answer: ${ua===null?'No answer':ua.selectedText}<br>Correct answer: ${ua===null?correctDisplay:ua.correctText}<br><em>${q.explanation}</em>`;
+    $('review').appendChild(item);
+  });
+}
+function hashStr(s){
+  let h1=0xdeadbeef, h2=0x41c6ce57;
+  for(let i=0;i<s.length;i++){
+    const ch=s.charCodeAt(i);
+    h1=Math.imul(h1^ch,2654435761); h2=Math.imul(h2^ch,1597334677);
+  }
+  h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);
+  h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+  return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);
+}
+function todayStrLocal(){ const d=new Date(); d.setHours(0,0,0,0); return d.toISOString().slice(0,10); }
+async function ensureRWPermission(handle){
+  const opts={mode:'readwrite'};
+  if((await handle.queryPermission(opts))==='granted') return true;
+  if((await handle.requestPermission(opts))==='granted') return true;
+  return false;
+}
+function downloadFallbackExport(quizTitle, missed){
+  const payload={quizTitle, date:todayStrLocal(), mistakes:missed};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const safe=quizTitle.replace(/[^\w\-]+/g,'_').slice(0,60);
+  a.href=url; a.download='mistakes_'+safe+'_'+todayStrLocal()+'.json';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+async function exportMistakesToJournal(forceCreate){
+  const quizTitle = document.title || 'AZ-104 Quiz';
+  const missed = [];
+  questions.forEach((q,i)=>{
+    const ua = userAnswers[i];
+    if(!ua || !ua.ok){
+      missed.push({section:q.section, question:q.question, options:q.options, answer:q.answer, selectCount:q.selectCount||null, explanation:q.explanation});
+    }
+  });
+  if(missed.length===0){ alert('Ошибок нет — нечего экспортировать.'); return; }
+  if(!('showOpenFilePicker' in window)){
+    alert('Браузер не поддерживает прямую запись в файл (нужен Chrome/Edge). Скачиваю отдельный файл — импортируйте его вручную в Журнал ошибок.');
+    downloadFallbackExport(quizTitle, missed);
+    return;
+  }
+  let handle;
+  try{
+    if(forceCreate){
+      handle = await window.showSaveFilePicker({suggestedName:'az104-mistakes-journal.json', types:[{description:'Журнал ошибок JSON', accept:{'application/json':['.json']}}]});
+    } else {
+      [handle] = await window.showOpenFilePicker({types:[{description:'Журнал ошибок JSON', accept:{'application/json':['.json']}}]});
+    }
+  }catch(e){ if(e.name!=='AbortError') console.error(e); return; }
+
+  let journal;
+  try{
+    const perm = await ensureRWPermission(handle);
+    if(!perm){ alert('Нет разрешения на запись в файл.'); return; }
+    const file = await handle.getFile();
+    const text = await file.text();
+    journal = text.trim() ? JSON.parse(text) : {mistakes:[]};
+    if(!journal.mistakes || !Array.isArray(journal.mistakes)) journal.mistakes=[];
+  }catch(e){ alert('Не удалось прочитать файл журнала: '+e.message); return; }
+
+  let added=0, reset=0;
+  missed.forEach(q=>{
+    const id = hashStr(quizTitle+'|'+q.section+'|'+q.question);
+    const existing = journal.mistakes.find(m=>m.id===id);
+    if(existing){ existing.box=1; existing.masteredStreak=0; existing.nextReview=todayStrLocal(); reset++; }
+    else{
+      journal.mistakes.push({id, quizTitle, domain:null, section:q.section, question:q.question, options:q.options, answer:q.answer, selectCount:q.selectCount, explanation:q.explanation, box:1, masteredStreak:0, nextReview:todayStrLocal(), firstMissed:todayStrLocal()});
+      added++;
+    }
+  });
+  try{
+    const writable = await handle.createWritable();
+    await writable.write(JSON.stringify(journal,null,2));
+    await writable.close();
+  }catch(e){ alert('Не удалось сохранить журнал: '+e.message); return; }
+  alert(`Готово. Новых вопросов: ${added}, повторно ошиблись: ${reset}.`);
+}
+
+function restart(){current=0;score=0;checked=false;userAnswers=Array(questions.length).fill(null);$('results').classList.remove('show');$('quizArea').classList.remove('hidden');renderQuestion();}
+$('checkBtn').addEventListener('click',checkAnswer);$('nextBtn').addEventListener('click',nextQuestion);$('restartBtn').addEventListener('click',restart);$('restartBtn2').addEventListener('click',restart);$('exportMistakesBtn').addEventListener('click',()=>exportMistakesToJournal(false));$('createJournalBtn').addEventListener('click',()=>exportMistakesToJournal(true));renderQuestion();
+</script></body></html>

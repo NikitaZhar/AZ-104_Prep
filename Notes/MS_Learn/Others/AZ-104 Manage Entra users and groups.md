@@ -1,0 +1,99 @@
+2026-07-17 11:56
+Tags: #
+
+# AZ-104 Manage Azure identities and governance (20–25%)
+- Create users and groups
+- Manage user and group properties
+- Manage licenses in Microsoft Entra ID
+- Manage external users
+- Configure self-service password reset (SSPR)
+
+**LP** [AZ-104: Manage identities and governance in Azure](https://learn.microsoft.com/en-us/training/paths/az-104-manage-identities-governance/).
+
+[8. Describe Azure identity, access, and security](https://docs.google.com/document/d/1Cl5sUhJEIOc73S5rgcXACGH2NDVMFk5yXl6APVO_UXI/edit?tab=t.0#heading=h.u3wzjjxd20v)
+Quiz 08 - **88%**
+[15. Understand Microsoft Entra ID](https://docs.google.com/document/d/1Cl5sUhJEIOc73S5rgcXACGH2NDVMFk5yXl6APVO_UXI/edit?tab=t.0#heading=h.mnyzsakvpcis)
+Quiz 15 - **68%**
+Assessment 15 
+[16. Create, configure, and manage identities](https://docs.google.com/document/d/1Cl5sUhJEIOc73S5rgcXACGH2NDVMFk5yXl6APVO_UXI/edit?tab=t.0#heading=h.mq4omxlq4yff)
+Quiz 16 
+Assessment 16 
+[4. Describe the core architectural components of Azure](https://docs.google.com/document/d/1Cl5sUhJEIOc73S5rgcXACGH2NDVMFk5yXl6APVO_UXI/edit?tab=t.0#heading=h.5wx6vufo7a2s)
+Quiz 4
+[17. Azure Policy initiatives](https://docs.google.com/document/d/1Cl5sUhJEIOc73S5rgcXACGH2NDVMFk5yXl6APVO_UXI/edit?tab=t.0#heading=h.kgogqg47bz9c)
+Quiz 17 
+Assessment 17 
+[18. Secure your Azure resources with Azure role-based access control (Azure RBAC)](https://docs.google.com/document/d/1Cl5sUhJEIOc73S5rgcXACGH2NDVMFk5yXl6APVO_UXI/edit?tab=t.0#heading=h.w4yeuxu3qbim)
+[19. Allow users to reset their password with Microsoft Entra self-service password reset](https://docs.google.com/document/d/1Cl5sUhJEIOc73S5rgcXACGH2NDVMFk5yXl6APVO_UXI/edit?tab=t.0#heading=h.rr35vjey17a3)
+
+## 2. Статьи (официальная документация)
+
+| Тема | Ссылка |
+| ---- | ------ |
+| Microsoft Entra External ID — обзор | [external-identities-overview](https://learn.microsoft.com/en-us/entra/external-id/external-identities-overview) |
+| Добавление B2B-гостей через портал | [add-users-administrator](https://learn.microsoft.com/en-us/entra/external-id/add-users-administrator) |
+| Свойства B2B-гостевого пользователя | [user-properties](https://learn.microsoft.com/en-us/entra/external-id/user-properties) |
+| Управление лицензиями в Entra ID | [licensing-whatis-azure-portal](https://learn.microsoft.com/en-us/entra/fundamentals/licensing) |
+| Group-based licensing | [licensing-groups-assign](https://learn.microsoft.com/en-us/entra/identity/users/licensing-groups-assign) |
+| Как работает SSPR | [concept-sspr-howitworks](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-sspr-howitworks) |
+
+## 3. Лабораторные работы (hands-on)
+
+| Тип | Ссылка |
+| --- | ------ |
+| Официальная лаба | [Lab 01: Manage Microsoft Entra ID Identities](https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_01-Manage_Entra_ID_Identities.html) |
+| Демо-инструкция | [Demonstration 01: Administer Identity](https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Demos/01%20-%20Administer%20Identity.html) |
+| Все файлы лаб (ZIP) | [Download labs repo](https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/archive/master.zip) |
+
+Практика внутри модулей (Exercise-юниты):
+
+- [Exercise – assign licenses to users](https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/3-exercise-assign-licenses-users)
+- [Exercise – restore or remove deleted users](https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/4-exercise-restore-remove-deleted-users)
+- [Exercise – add groups in Microsoft Entra ID](https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/6-exercise-add-groups-azure-active-directory)
+- [Exercise – change group license assignments](https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/9-exercise-change-group-license-assignments)
+- [Exercise – change user license assignments](https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/10-exercise-change-user-license-assignments)
+
+---
+
+# ЧЕК-ЛИСТ
+
+## Модули
+- [ ] Understand Microsoft Entra ID
+- [ ] Create, configure, and manage identities (весь модуль)
+- [ ] Allow users to reset their password with SSPR
+
+## По пунктам экзамена
+### Create users and groups
+- [ ] Юнит «Create, configure, and manage users»
+- [ ] Юнит «Create, configure, and manage groups»
+- [ ] Exercise – add groups in Microsoft Entra ID
+
+### Manage user and group properties
+- [ ] Свойства пользователей (юнит 2)
+- [ ] Свойства групп, dynamic groups (юнит 5)
+- [ ] Exercise – restore or remove deleted users
+
+### Manage licenses in Microsoft Entra ID
+- [ ] Юнит «Manage licenses»
+- [ ] Статья: Group-based licensing
+- [ ] Exercise – assign licenses to users
+- [ ] Exercise – change group license assignments
+- [ ] Exercise – change user license assignments
+
+### Manage external users
+- [ ] Статья: External ID overview
+- [ ] Статья: Add B2B guest users
+- [ ] Статья: B2B guest user properties
+
+### Configure self-service password reset (SSPR)
+- [ ] Юнит «What is SSPR»
+- [ ] Юнит «Implement SSPR»
+- [ ] Статья: How SSPR works
+
+## Практика (обязательно руками)
+- [ ] Lab 01: Manage Microsoft Entra ID Identities
+- [ ] Демо 01: Administer Identity
+
+## Проверка готовности
+- [ ] [Free Practice Assessment (AZ-104)](https://learn.microsoft.com/en-us/credentials/certifications/exams/az-104/practice/assessment?assessment-type=practice&assessmentId=21)
+- [ ] Module assessment (knowledge check в конце каждого модуля)
