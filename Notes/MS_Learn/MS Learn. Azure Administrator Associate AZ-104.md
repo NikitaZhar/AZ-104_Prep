@@ -9,7 +9,16 @@ Certification AZ-104
 План подготовки
 [[AZ-104 План подготовки]]
 
+Мета / инструменты
+[[_Numbering Plan]]
+[[_Quiz Builder (Contract)]]
+
+Повторение ошибок
+[[az104-mistake-log.html]] 
+путь к журналу
+`MS_Learn/Review/az104-mistakes-journal.json`
+
 
 Others
-[[AZ-104 Manage Entra users and groups]]
+[[2.1 Manage Microsoft Entra users and groups]]
 

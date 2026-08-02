@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>AZ-104 — Журнал ошибок</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1114; --surface:#161C21; --surface2:#1D242B; --border:#2A323A;
+    --text:#E7ECEF; --muted:#8494A0;
+    --accent:#FFB454; --ok:#7CD992; --bad:#E8604C;
+    --c1:#FFB454; --c2:#5EC8D8; --c3:#B98AE3; --c4:#7CD992; --c5:#E8836F;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin:0 0 6px;}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;margin:0 0 4px;letter-spacing:-0.01em;}
+  .subhead{color:var(--muted);font-size:14px;margin:0 0 22px;}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
+  .section{margin-bottom:20px;}
+  .section-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+
+  .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;border:none;border-radius:9px;padding:11px 18px;cursor:pointer;transition:transform .1s ease,opacity .1s ease;}
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--accent);color:#1a1300;}
+  .btn-primary:disabled{opacity:.35;cursor:not-allowed;}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);}
+  .btn-ghost:hover{border-color:var(--muted);}
+  .btn-small{padding:7px 13px;font-size:12.5px;}
+  .btn-ok{background:var(--ok);color:#062b0e;}
+  .btn-bad{background:var(--bad);color:#2a0900;}
+
+  /* file connect */
+  .connect-panel{
+    background:linear-gradient(135deg,var(--surface),var(--surface2));
+    border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:22px;
+  }
+  .connect-panel p{color:var(--muted);font-size:13.5px;line-height:1.6;margin:0 0 16px;}
+  .connect-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .status-line{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);margin-bottom:16px;flex-wrap:wrap;}
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex-shrink:0;}
+  .status-dot.warn{background:var(--accent);}
+  .warn-box{background:rgba(232,131,111,.1);border:1px solid rgba(232,131,111,.35);border-radius:10px;padding:12px 14px;font-size:12.5px;color:var(--text);margin-bottom:14px;line-height:1.5;}
+
+  .hero{display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:20px;flex-wrap:wrap;}
+  .hero-count{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;line-height:1;color:var(--accent);min-width:64px;}
+  .hero-label{color:var(--muted);font-size:13px;line-height:1.4;}
+  .hero-label b{color:var(--text);font-weight:600;}
+  .hero .btn-primary{margin-left:auto;}
+
+  /* import */
+  .import-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  input[type=file]{display:none;}
+  select{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 10px;color:var(--text);font-family:'Inter',sans-serif;font-size:13.5px;}
+  .import-note{font-size:12px;color:var(--muted);margin-top:10px;}
+
+  /* module groups */
+  .module-block{margin-bottom:16px;}
+  .module-head{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:8px;display:flex;gap:8px;align-items:center;}
+  .row{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:10px;padding:11px 14px;background:var(--surface);margin-bottom:7px;}
+  .row.due{border-color:var(--accent);}
+  .row-q{flex:1;min-width:0;}
+  .row-q .qtext{font-size:13.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .row-q .meta{font-size:11px;color:var(--muted);margin-top:3px;}
+  .ladder{display:flex;gap:3px;flex-shrink:0;}
+  .rung{width:9px;height:9px;border-radius:2px;background:var(--border);}
+  .rung.filled{background:var(--accent);}
+  .next-date{font-size:11px;color:var(--muted);min-width:60px;text-align:right;flex-shrink:0;}
+  .empty{text-align:center;color:var(--muted);padding:36px 20px;font-size:13.5px;line-height:1.6;}
+
+  /* review overlay — exact visual/interaction mirror of the original quiz engine, scoped under #reviewApp */
+  .overlay{position:fixed;inset:0;background:rgba(6,8,10,.94);display:flex;align-items:flex-start;justify-content:center;padding:28px 20px;overflow-y:auto;z-index:50;}
+  .overlay.hidden{display:none;}
+  #reviewApp{
+    --rbg:#0b1f2a;--rpanel:#102b3a;--rtext:#eef7fb;--rmuted:#a9c0cc;--raccent:#7cc7ff;--raccent2:#9ed8ff;--rcorrect:#2ecc71;--rwrong:#ff6b6b;--rborder:#315365;
+    width:min(1050px,100%);background:rgba(16,43,58,.98);border:1px solid var(--rborder);border-radius:18px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden;font-family:Arial,Helvetica,sans-serif;color:var(--rtext);
+  }
+  #reviewApp header{padding:28px 32px 18px;border-bottom:1px solid var(--rborder);background:rgba(8,25,34,.6);}
+  #reviewApp h1{margin:0 0 10px;font-size:26px;font-family:Arial,Helvetica,sans-serif;}
+  #reviewApp .subtitle{color:var(--rmuted);font-size:15px;line-height:1.5;}
+  #reviewApp .progress-wrap{padding:22px 32px 0;}
+  #reviewApp .progress-label{display:flex;justify-content:space-between;color:var(--rmuted);font-size:14px;margin-bottom:10px;}
+  #reviewApp .bar{width:100%;height:8px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden;}
+  #reviewApp .fill{height:100%;width:0;background:var(--raccent);transition:width .25s ease;}
+  #reviewApp main{padding:32px;}
+  #reviewApp .section{display:inline-block;color:var(--raccent2);background:rgba(124,199,255,.12);border:1px solid rgba(124,199,255,.25);padding:8px 12px;border-radius:999px;font-size:14px;margin-bottom:20px;}
+  #reviewApp .question{font-size:24px;line-height:1.45;margin:0 0 26px;color:var(--rtext);}
+  #reviewApp .options{display:grid;gap:12px;margin-bottom:24px;}
+  #reviewApp .option{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--rborder);border-radius:14px;background:rgba(8,25,34,.45);cursor:pointer;transition:border-color .15s ease,background .15s ease;}
+  #reviewApp .option:hover{border-color:var(--raccent);background:rgba(124,199,255,.08);}
+  #reviewApp .option input{margin-top:3px;transform:scale(1.2);accent-color:var(--raccent);}
+  #reviewApp .option.correct{border-color:var(--rcorrect);background:rgba(46,204,113,.12);}
+  #reviewApp .option.wrong{border-color:var(--rwrong);background:rgba(255,107,107,.12);}
+  #reviewApp .letter{color:var(--raccent2);font-weight:bold;width:22px;flex:0 0 auto;}
+  #reviewApp .hint{color:var(--rmuted);font-size:14px;margin:-8px 0 16px;}
+  #reviewApp .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px;}
+  #reviewApp button{border:0;border-radius:12px;padding:13px 18px;font-size:16px;font-weight:700;cursor:pointer;background:var(--raccent);color:#062131;font-family:Arial,Helvetica,sans-serif;}
+  #reviewApp button.secondary{background:rgba(255,255,255,.12);color:var(--rtext);border:1px solid var(--rborder);}
+  #reviewApp button:disabled{opacity:.45;cursor:not-allowed;}
+  #reviewApp .feedback{display:none;margin-top:22px;padding:18px;border-radius:14px;border:1px solid var(--rborder);background:rgba(8,25,34,.55);line-height:1.55;}
+  #reviewApp .feedback.show{display:block;}
+  #reviewApp .status{font-weight:800;margin-bottom:8px;}
+  #reviewApp .status.ok{color:var(--rcorrect);}
+  #reviewApp .status.bad{color:var(--rwrong);}
+  #reviewApp .results{display:none;padding:32px;line-height:1.55;}
+  #reviewApp .results.show{display:block;}
+  #reviewApp .score{font-size:42px;font-weight:800;margin:12px 0;color:var(--raccent2);}
+  #reviewApp .review{margin-top:24px;display:grid;gap:12px;}
+  #reviewApp .review-item{border:1px solid var(--rborder);border-radius:14px;padding:14px 16px;background:rgba(8,25,34,.45);}
+  #reviewApp .review-item strong{color:var(--raccent2);}
+  #reviewApp .hidden{display:none;}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
+  @media (max-width:600px){
+    .hero{flex-direction:column;align-items:flex-start;}.hero .btn-primary{margin-left:0;}
+    #reviewApp header,#reviewApp main,#reviewApp .progress-wrap,#reviewApp .results{padding-left:18px;padding-right:18px;}
+    #reviewApp .question{font-size:20px;} #reviewApp h1{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">AZ-104 · Спейсд-повтор</p>
+  <h1>Журнал ошибок</h1>
+  <p class="subhead">Импортируете экспорт ошибок из quiz — повторяете только их, в том же формате A/B/C/D, по интервалам.</p>
+
+  <div class="section" id="connectSection">
+    <div class="connect-panel">
+      <p id="connectText">Журнал — это единый JSON-файл (<span class="mono">az104-mistakes-journal.json</span>) в папке <span class="mono">MS_Learn/Review/</span> — один на всю сертификацию. Quiz дописывает в него ошибки после прохождения (Export mistakes → выберите этот файл); здесь откройте тот же файл, чтобы увидеть, что пора повторить.</p>
+      <div class="connect-actions">
+        <button class="btn btn-primary" id="openExistingBtn">Открыть существующий файл</button>
+        <button class="btn btn-ghost" id="createNewBtn">Создать новый журнал</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mainArea" style="display:none;">
+
+    <div class="status-line">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText"></span>
+      <button class="btn btn-ghost btn-small" id="refreshBtn" style="margin-left:auto;">Обновить</button>
+      <button class="btn btn-ghost btn-small" id="switchFileBtn">Сменить файл</button>
+    </div>
+
+    <div class="hero">
+      <div class="hero-count mono" id="dueCount">0</div>
+      <div class="hero-label">вопросов <b>к повтору сегодня</b><br>Формат — как в оригинальном quiz.</div>
+      <button class="btn btn-primary" id="startReviewBtn" disabled>Начать повтор</button>
+    </div>
+
+    <div class="section">
+      <div class="section-title"><span>Все вопросы в ротации</span></div>
+      <div id="listArea"></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="overlay hidden" id="overlay">
+  <div id="reviewApp">
+    <header><h1 id="rqH1">Review</h1><div class="subtitle"></div></header>
+    <div id="rqQuizArea">
+      <div class="progress-wrap">
+        <div class="progress-label"><span id="rqCounter"></span><span id="rqScoreLive"></span></div>
+        <div class="bar"><div class="fill" id="rqProgressFill"></div></div>
+      </div>
+      <main>
+        <div class="section" id="rqSectionTag"></div>
+        <p class="question" id="rqQuestionText"></p>
+        <div class="hint" id="rqHint"></div>
+        <div class="options" id="rqOptions"></div>
+        <div class="controls">
+          <button id="rqCheckBtn">Check answer</button>
+          <button id="rqNextBtn" class="secondary" disabled>Next</button>
+          <button id="rqRestartBtn" class="secondary">Restart</button>
+          <button id="rqCloseBtn" class="secondary">Close</button>
+        </div>
+        <div class="feedback" id="rqFeedback">
+          <div class="status" id="rqStatus"></div>
+          <div id="rqExplanation"></div>
+        </div>
+      </main>
+    </div>
+    <div class="results" id="rqResults">
+      <h2>Review completed</h2>
+      <div class="score" id="rqFinalScore"></div>
+      <p id="rqFinalText"></p>
+      <div class="controls">
+        <button id="rqRestartBtn2">Restart review</button>
+        <button id="rqCloseBtn2" class="secondary">Close</button>
+      </div>
+      <div class="review" id="rqReview"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const INTERVALS = [1,3,7,14,30]; // days per box 1..5
+const DOMAIN_NAMES = {ID:'Identities & Governance',STOR:'Storage',COMP:'Compute',NET:'Networking',MON:'Monitor & Maintain'};
+
+let journal = {mistakes:[]};
+let fileHandle = null;
+let fileMode = 'fsapi'; // 'fsapi' | 'memory' (fallback, no File System Access API)
+let reviewQueue = [];
+let rqCurrent=0, rqScore=0, rqChecked=false, rqUserAnswers=[];
+let rqShuffled = [], rqCorrectSet = [];
+
+const supportsFS = 'showSaveFilePicker' in window;
+
+function todayStr(){ const d=new Date(); d.setHours(0,0,0,0); return d.toISOString().slice(0,10); }
+function addDays(dateStr,days){ const d=new Date(dateStr+'T00:00:00'); d.setDate(d.getDate()+days); return d.toISOString().slice(0,10); }
+function isDue(m){ return m.nextReview<=todayStr(); }
+function fmtDate(dateStr){ const d=new Date(dateStr+'T00:00:00'); return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit'}); }
+function isMulti(q){ return Array.isArray(q.answer); }
+function escapeHtml(str){ const d=document.createElement('div'); d.textContent=str; return d.innerHTML; }
+
+// tiny stable hash for dedupe ids
+function hashStr(s){
+  let h1=0xdeadbeef, h2=0x41c6ce57;
+  for(let i=0;i<s.length;i++){
+    const ch=s.charCodeAt(i);
+    h1=Math.imul(h1^ch,2654435761); h2=Math.imul(h2^ch,1597334677);
+  }
+  h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);
+  h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+  return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);
+}
+
+/* ---------- file connect ---------- */
+document.getElementById('openExistingBtn').onclick = async ()=>{
+  if(!supportsFS){ return fallbackImportJournal(); }
+  try{
+    const [handle] = await window.showOpenFilePicker({
+      types:[{description:'Журнал JSON', accept:{'application/json':['.json']}}]
+    });
+    fileHandle = handle; fileMode='fsapi';
+    const perm = await verifyPermission(handle, true);
+    if(!perm){ alert('Нет разрешения на запись в файл.'); return; }
+    await loadFromHandle();
+    enterMain();
+  }catch(e){ if(e.name!=='AbortError') console.error(e); }
+};
+document.getElementById('createNewBtn').onclick = async ()=>{
+  if(!supportsFS){ journal={mistakes:[]}; fileMode='memory'; enterMain(); return; }
+  try{
+    const handle = await window.showSaveFilePicker({
+      suggestedName:'az104-mistakes-journal.json',
+      types:[{description:'Журнал JSON', accept:{'application/json':['.json']}}]
+    });
+    fileHandle = handle; fileMode='fsapi';
+    journal = {mistakes:[]};
+    await writeToHandle();
+    enterMain();
+  }catch(e){ if(e.name!=='AbortError') console.error(e); }
+};
+document.getElementById('switchFileBtn').onclick = ()=>{
+  fileHandle=null; journal={mistakes:[]};
+  document.getElementById('mainArea').style.display='none';
+  document.getElementById('connectSection').style.display='block';
+};
+document.getElementById('refreshBtn').onclick = async ()=>{
+  if(fileMode==='fsapi' && fileHandle){ await loadFromHandle(); render(); }
+  else { alert('Автосохранение недоступно в этом браузере — перезагрузите файл журнала вручную через "Сменить файл".'); }
+};
+
+async function verifyPermission(handle, forWrite){
+  const opts = forWrite ? {mode:'readwrite'} : {};
+  if((await handle.queryPermission(opts))==='granted') return true;
+  if((await handle.requestPermission(opts))==='granted') return true;
+  return false;
+}
+async function loadFromHandle(){
+  try{
+    const file = await fileHandle.getFile();
+    const text = await file.text();
+    journal = text.trim() ? JSON.parse(text) : {mistakes:[]};
+    if(!journal.mistakes || !Array.isArray(journal.mistakes)) journal.mistakes=[];
+    normalizeJournal();
+  }catch(e){
+    alert(`Не удалось прочитать выбранный файл как журнал: ${e.message}\n\nЕсли вы выбрали файл-экспорт ошибок (mistakes_....json) вместо файла журнала — это не одно и то же. Файл-экспорт нужно ЗАГРУЗИТЬ через кнопку "Выбрать файл(ы) экспорта" на главном экране, после того как журнал будет открыт/создан.`);
+    journal = {mistakes:[]};
+  }
+}
+function normalizeJournal(){
+  // repair entries missing required fields (e.g. from a manually edited or malformed file)
+  journal.mistakes = journal.mistakes.filter(m=>m && typeof m.question==='string' && Array.isArray(m.options));
+  journal.mistakes.forEach(m=>{
+    if(!m.id) m.id = hashStr((m.quizTitle||'')+'|'+(m.section||'')+'|'+m.question);
+    if(!m.quizTitle) m.quizTitle = 'Без названия';
+    if(!Number.isInteger(m.box) || m.box<1 || m.box>5) m.box = 1;
+    if(typeof m.masteredStreak!=='number') m.masteredStreak = 0;
+    if(!m.nextReview) m.nextReview = todayStr();
+  });
+}
+async function writeToHandle(){
+  if(fileMode!=='fsapi' || !fileHandle) return;
+  try{
+    const writable = await fileHandle.createWritable();
+    await writable.write(JSON.stringify(journal,null,2));
+    await writable.close();
+  }catch(e){ console.error('Write error', e); alert('Не удалось сохранить файл журнала: '+e.message); }
+}
+function fallbackImportJournal(){
+  const inp = document.createElement('input');
+  inp.type='file'; inp.accept='.json';
+  inp.onchange = async ()=>{
+    const f = inp.files[0]; if(!f) return;
+    const text = await f.text();
+    try{
+      journal = JSON.parse(text);
+      if(!journal.mistakes || !Array.isArray(journal.mistakes)) journal.mistakes=[];
+      normalizeJournal();
+    }
+    catch(e){
+      alert(`Не удалось прочитать файл как журнал: ${e.message}`);
+      journal={mistakes:[]};
+    }
+    fileMode='memory';
+    enterMain();
+  };
+  inp.click();
+}
+async function persist(){
+  if(fileMode==='fsapi'){ await writeToHandle(); }
+  // memory mode: nothing to auto-save; user must export manually (button shown in status bar)
+}
+
+function enterMain(){
+  document.getElementById('connectSection').style.display='none';
+  document.getElementById('mainArea').style.display='block';
+  renderStatus();
+  render();
+}
+function renderStatus(){
+  const dot = document.getElementById('statusDot');
+  const text = document.getElementById('statusText');
+  if(fileMode==='fsapi'){
+    dot.className='status-dot';
+    text.innerHTML = `Автосохранение в <span class="mono">${fileHandle ? fileHandle.name : 'файл'}</span>`;
+  } else {
+    dot.className='status-dot warn';
+    text.innerHTML = `Ваш браузер не поддерживает автосохранение в файл (нужен Chrome/Edge). Данные только в памяти вкладки — не забудьте <span id="exportLink" style="text-decoration:underline;cursor:pointer;color:var(--accent);">экспортировать</span> перед закрытием.`;
+    setTimeout(()=>{
+      const link = document.getElementById('exportLink');
+      if(link) link.onclick = exportMemoryJournal;
+    },0);
+  }
+}
+function exportMemoryJournal(){
+  const blob = new Blob([JSON.stringify(journal,null,2)],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href=url; a.download='az104-mistakes-journal.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* ---------- list rendering ---------- */
+function render(){
+  renderList();
+  const due = journal.mistakes.filter(isDue);
+  document.getElementById('dueCount').textContent = due.length;
+  document.getElementById('startReviewBtn').disabled = due.length===0;
+}
+function renderList(){
+  const area = document.getElementById('listArea');
+  if(journal.mistakes.length===0){
+    area.innerHTML = `<div class="card empty">Пусто. Пройдите quiz, экспортируйте ошибки букмарклетом «📤 Скачать ошибки» и импортируйте файл выше.</div>`;
+    return;
+  }
+  const byModule = {};
+  journal.mistakes.forEach(m=>{ (byModule[m.quizTitle] = byModule[m.quizTitle]||[]).push(m); });
+  let html='';
+  Object.keys(byModule).sort().forEach(title=>{
+    const items = byModule[title].sort((a,b)=>a.nextReview.localeCompare(b.nextReview));
+    html += `<div class="module-block"><div class="module-head">${escapeHtml(title)} · ${items.length}</div>`;
+    items.forEach(m=>{
+      const due = isDue(m);
+      let rungs='';
+      for(let i=1;i<=5;i++) rungs += `<div class="rung ${i<=m.box?'filled':''}"></div>`;
+      const domTag = m.domain ? `${m.domain} · ` : '';
+      html += `<div class="row ${due?'due':''}">
+        <div class="row-q">
+          <div class="qtext">${escapeHtml(m.question)}</div>
+          <div class="meta">${domTag}${escapeHtml(m.section)}</div>
+        </div>
+        <div class="ladder">${rungs}</div>
+        <div class="next-date mono">${due?'сегодня':fmtDate(m.nextReview)}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  area.innerHTML = html;
+}
+
+/* ---------- review — exact functional mirror of the original quiz engine ---------- */
+function shuffleArray(arr){
+  const r=[...arr];
+  for(let i=r.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [r[i],r[j]]=[r[j],r[i]]; }
+  return r;
+}
+document.getElementById('startReviewBtn').onclick = ()=>{
+  reviewQueue = journal.mistakes.filter(isDue);
+  if(reviewQueue.length===0) return;
+  rqCurrent=0; rqScore=0; rqChecked=false;
+  rqUserAnswers = Array(reviewQueue.length).fill(null);
+  const titles = [...new Set(reviewQueue.map(q=>q.quizTitle))];
+  document.getElementById('rqH1').textContent = titles.length===1 ? titles[0] : 'Mistake review';
+  document.getElementById('overlay').classList.remove('hidden');
+  document.getElementById('rqResults').classList.remove('show');
+  document.getElementById('rqQuizArea').classList.remove('hidden');
+  rqRenderQuestion();
+};
+document.getElementById('rqCloseBtn').onclick = closeReview;
+document.getElementById('rqCloseBtn2').onclick = closeReview;
+function closeReview(){
+  document.getElementById('overlay').classList.add('hidden');
+  render();
+}
+document.getElementById('rqCheckBtn').addEventListener('click', rqCheckAnswer);
+document.getElementById('rqNextBtn').addEventListener('click', rqNextQuestion);
+document.getElementById('rqRestartBtn').addEventListener('click', rqRestart);
+document.getElementById('rqRestartBtn2').addEventListener('click', rqRestart);
+document.getElementById('rqOptions').addEventListener('change', rqEnforceLimit);
+
+function rqUpdateLiveScore(){
+  const percent = rqCurrent===0 && rqScore===0 ? 0 : Math.round((rqScore/reviewQueue.length)*100);
+  document.getElementById('rqScoreLive').textContent = `Score: ${rqScore} / ${reviewQueue.length} (${percent}%)`;
+}
+function rqRenderQuestion(){
+  const q = reviewQueue[rqCurrent];
+  rqChecked=false;
+  const answerArr = isMulti(q) ? q.answer : [q.answer];
+  rqShuffled = shuffleArray(q.options.map((text,originalIndex)=>({text,originalIndex})));
+  rqCorrectSet = rqShuffled.map((o,idx)=> answerArr.includes(o.originalIndex)?idx:-1).filter(x=>x>=0);
+
+  document.getElementById('rqCounter').textContent = `Question ${rqCurrent+1} of ${reviewQueue.length}`;
+  rqUpdateLiveScore();
+  document.getElementById('rqProgressFill').style.width = `${(rqCurrent/reviewQueue.length)*100}%`;
+  document.getElementById('rqSectionTag').textContent = `${q.quizTitle} — ${q.section}`;
+  document.getElementById('rqQuestionText').innerHTML = q.question;
+  document.getElementById('rqHint').textContent = isMulti(q) ? `Select ${q.selectCount}.` : '';
+  document.getElementById('rqFeedback').classList.remove('show');
+  document.getElementById('rqStatus').textContent='';
+  document.getElementById('rqExplanation').textContent='';
+  document.getElementById('rqNextBtn').disabled=true;
+  document.getElementById('rqCheckBtn').disabled=false;
+
+  const inputType = isMulti(q) ? 'checkbox' : 'radio';
+  const optWrap = document.getElementById('rqOptions');
+  optWrap.innerHTML='';
+  rqShuffled.forEach((option,index)=>{
+    const label=document.createElement('label');
+    label.className='option';
+    label.innerHTML=`<input type="${inputType}" name="rqAnswer" value="${index}"><span class="letter">${String.fromCharCode(65+index)}.</span><span>${escapeHtml(option.text)}</span>`;
+    optWrap.appendChild(label);
+  });
+}
+function rqEnforceLimit(){
+  const q = reviewQueue[rqCurrent];
+  if(!isMulti(q)) return;
+  const boxes=[...document.querySelectorAll('input[name="rqAnswer"]')];
+  const checkedCount = boxes.filter(b=>b.checked).length;
+  boxes.forEach(b=>{ b.disabled = (!b.checked && checkedCount>=q.selectCount); });
+}
+function rqSelectedIndices(){
+  return [...document.querySelectorAll('input[name="rqAnswer"]:checked')].map(b=>Number(b.value));
+}
+async function rqCheckAnswer(){
+  if(rqChecked) return;
+  const q = reviewQueue[rqCurrent];
+  const sel = rqSelectedIndices();
+  const need = isMulti(q) ? q.selectCount : 1;
+  if(sel.length!==need){
+    document.getElementById('rqFeedback').classList.add('show');
+    document.getElementById('rqStatus').textContent = isMulti(q) ? `Please select ${q.selectCount} option(s).` : 'Please select an answer.';
+    document.getElementById('rqStatus').className='status';
+    document.getElementById('rqExplanation').textContent='';
+    return;
+  }
+  rqChecked=true;
+  const correctSorted=[...rqCorrectSet].sort((a,b)=>a-b).join(',');
+  const selSorted=[...sel].sort((a,b)=>a-b).join(',');
+  const ok = correctSorted===selSorted;
+  if(ok) rqScore++;
+
+  rqUserAnswers[rqCurrent] = {
+    selectedText: sel.map(i=>rqShuffled[i].text).join(' | '),
+    correctText: rqCorrectSet.map(i=>rqShuffled[i].text).join(' | '),
+    ok
+  };
+
+  document.querySelectorAll('#rqOptions .option').forEach((el,index)=>{
+    el.querySelector('input').disabled=true;
+    if(rqCorrectSet.includes(index)) el.classList.add('correct');
+    if(sel.includes(index) && !rqCorrectSet.includes(index)) el.classList.add('wrong');
+  });
+  document.getElementById('rqFeedback').classList.add('show');
+  document.getElementById('rqStatus').textContent = ok ? 'Correct' : 'Incorrect';
+  document.getElementById('rqStatus').className = 'status '+(ok?'ok':'bad');
+  document.getElementById('rqExplanation').textContent = q.explanation;
+  rqUpdateLiveScore();
+  document.getElementById('rqNextBtn').disabled=false;
+  document.getElementById('rqCheckBtn').disabled=true;
+
+  // apply Leitner update to the persistent journal entry
+  const master = journal.mistakes.find(m=>m.id===q.id);
+  if(master){
+    if(ok){
+      if(master.box===5){ master.masteredStreak=(master.masteredStreak||0)+1; master.nextReview=addDays(todayStr(),INTERVALS[4]); }
+      else { master.box=master.box+1; master.nextReview=addDays(todayStr(),INTERVALS[master.box-1]); }
+    } else {
+      master.box=1; master.masteredStreak=0; master.nextReview=addDays(todayStr(),INTERVALS[0]);
+    }
+    await persist();
+  }
+}
+function rqNextQuestion(){
+  if(rqCurrent<reviewQueue.length-1){ rqCurrent++; rqRenderQuestion(); }
+  else rqShowResults();
+}
+function rqShowResults(){
+  document.getElementById('rqProgressFill').style.width='100%';
+  document.getElementById('rqQuizArea').classList.add('hidden');
+  document.getElementById('rqResults').classList.add('show');
+
+  const percent = Math.round(rqScore/reviewQueue.length*100);
+  document.getElementById('rqFinalScore').textContent = `${rqScore} / ${reviewQueue.length} (${percent}%)`;
+  document.getElementById('rqFinalText').textContent = percent>=85
+    ? 'Отличный результат — эти вопросы можно считать закреплёнными.'
+    : percent>=70
+      ? 'Неплохо, но часть вопросов стоит повторить ещё раз в следующий заход.'
+      : 'Стоит вернуться к материалу — многое пока не закрепилось.';
+
+  const reviewWrap = document.getElementById('rqReview');
+  reviewWrap.innerHTML='';
+  reviewQueue.forEach((q,i)=>{
+    const ua = rqUserAnswers[i];
+    const ok = ua!==null && ua.ok;
+    const correctText = isMulti(q) ? q.answer.map(a=>q.options[a]).join(' | ') : q.options[q.answer];
+    const item=document.createElement('div');
+    item.className='review-item';
+    item.innerHTML=`<strong>${i+1}. ${escapeHtml(q.section)}</strong><br>${escapeHtml(q.question)}<br><span style="color:${ok?'var(--rcorrect)':'var(--rwrong)'}">${ua===null?'Not answered':(ok?'Correct':'Incorrect')}</span><br>Your answer: ${ua===null?'No answer':escapeHtml(ua.selectedText)}<br>Correct answer: ${ua===null?escapeHtml(correctText):escapeHtml(ua.correctText)}<br><em>${escapeHtml(q.explanation)}</em>`;
+    reviewWrap.appendChild(item);
+  });
+  render(); // refresh due-count/list behind the overlay — Leitner state has changed
+}
+function rqRestart(){
+  reviewQueue = journal.mistakes.filter(isDue); // re-pull the current due set
+  if(reviewQueue.length===0){ closeReview(); return; }
+  rqCurrent=0; rqScore=0; rqChecked=false;
+  rqUserAnswers = Array(reviewQueue.length).fill(null);
+  document.getElementById('rqResults').classList.remove('show');
+  document.getElementById('rqQuizArea').classList.remove('hidden');
+  rqRenderQuestion();
+}
+</script>
+</body>
+</html>

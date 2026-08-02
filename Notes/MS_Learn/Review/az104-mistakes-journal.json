@@ -1,0 +1,552 @@
+{
+  "mistakes": [
+    {
+      "id": "10d91dfb091373",
+      "quizTitle": "AZ-104 — Describe Azure Identity, Access, and Security Quiz",
+      "domain": null,
+      "section": "Passwordless Options",
+      "question": "Which passwordless options does Microsoft Entra ID support? (Choose three)",
+      "options": [
+        "Windows Hello for Business",
+        "Microsoft Authenticator app",
+        "FIDO2 security keys",
+        "Microsoft Entra Connect sync"
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "selectCount": 3,
+      "explanation": "Entra ID supports three passwordless options: Windows Hello for Business, the Microsoft Authenticator app, and FIDO2 security keys.",
+      "box": 4,
+      "masteredStreak": 0,
+      "nextReview": "2026-08-14",
+      "firstMissed": "2026-07-17"
+    },
+    {
+      "id": "8470f068815ee",
+      "quizTitle": "AZ-104 — Describe Azure Identity, Access, and Security Quiz",
+      "domain": null,
+      "section": "External ID Capabilities",
+      "question": "How are B2B collaboration users represented in your directory?",
+      "options": [
+        "As guest users in your directory",
+        "As full member accounts in your directory",
+        "They aren't in your directory at all",
+        "As managed identities on your resources"
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "B2B collaboration users are represented in your directory, typically as guest users.",
+      "box": 3,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-27",
+      "firstMissed": "2026-07-17"
+    },
+    {
+      "id": "1a95132218f84",
+      "quizTitle": "AZ-104 — Describe Azure Identity, Access, and Security Quiz",
+      "domain": null,
+      "section": "External ID Capabilities",
+      "question": "What does B2B direct connect currently support, and how are its users represented?",
+      "options": [
+        "Teams shared channels; users aren't in your directory",
+        "SaaS app publishing; users appear as guests",
+        "Domain join; users appear as members",
+        "LDAP queries; users sync to the managed domain"
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "B2B direct connect supports Teams shared channels; those users aren't represented in your directory but are visible in the shared channel and Teams admin center reports.",
+      "box": 3,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-27",
+      "firstMissed": "2026-07-17"
+    },
+    {
+      "id": "115b5d68e1d863",
+      "quizTitle": "AZ-104 — Describe Azure Identity, Access, and Security Quiz",
+      "domain": null,
+      "section": "Zero Trust in Practice",
+      "question": "How does Zero Trust change the traditional perimeter model?",
+      "options": [
+        "Access is based on authentication and risk, not network location",
+        "Access depends only on being inside the corporate network",
+        "VPN access grants full internal trust by default",
+        "Personal devices are always blocked from any access"
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Zero Trust grants access based on authentication and context (identity, device, risk) rather than assuming safety from network location.",
+      "box": 3,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-27",
+      "firstMissed": "2026-07-17"
+    },
+    {
+      "id": "fb2a60380ef51",
+      "quizTitle": "AZ-104 — Describe Azure Identity, Access, and Security Quiz",
+      "domain": null,
+      "section": "Defense-in-Depth Controls",
+      "question": "Which layer uses DDoS protection and perimeter firewalls?",
+      "options": [
+        "The perimeter layer",
+        "The data layer",
+        "The compute layer",
+        "The identity and access layer"
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "The perimeter layer uses DDoS protection to filter large-scale attacks and perimeter firewalls to identify and alert on malicious attacks.",
+      "box": 3,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-27",
+      "firstMissed": "2026-07-17"
+    },
+    {
+      "id": "2c0bdb8c93110",
+      "quizTitle": "AZ-104 — Describe Azure Identity, Access, and Security Quiz",
+      "domain": null,
+      "section": "Defender for Cloud Hybrid and Multicloud",
+      "question": "What is required to extend Defender for Cloud protection to non-Azure machines?",
+      "options": [
+        "Deploy Azure Arc and enable enhanced security features",
+        "Deploy Microsoft Entra Connect to those machines",
+        "Move the machines into a managed domain",
+        "Enable single sign-on on each machine"
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Azure Arc can extend Microsoft Defender plans to non-Azure machines; deploy Arc and enable Defender for Cloud's enhanced security features.",
+      "box": 3,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-27",
+      "firstMissed": "2026-07-17"
+    },
+    {
+      "id": "3dcecf7d4a2c8",
+      "quizTitle": "AZ-104 — Describe Azure Identity, Access, and Security Quiz",
+      "domain": null,
+      "section": "Assess Secure Defend",
+      "question": "What are the three vital functions Defender for Cloud fills? (Choose three)",
+      "options": [
+        "Continuously assess",
+        "Secure",
+        "Defend",
+        "Synchronize"
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "selectCount": 3,
+      "explanation": "Defender for Cloud continuously assesses posture, secures resources with the Microsoft cloud security benchmark (MCSB), and defends against threats.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-17"
+    },
+    {
+      "id": "11b9508808f991",
+      "quizTitle": "AZ-104 — Describe Azure Identity, Access, and Security Quiz",
+      "domain": null,
+      "section": "Advanced Threat Protection",
+      "question": "Which protections are part of Defender for Cloud's advanced threat protection?",
+      "options": [
+        "Just-in-time VM access and adaptive application controls",
+        "Domain join and group policy management",
+        "Self-service password reset and smart lockout",
+        "One-way synchronization to a managed domain"
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Advanced threat protection includes just-in-time VM access and adaptive application controls for resources like VMs, SQL, containers, and networks.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-22",
+      "firstMissed": "2026-07-17"
+    },
+    {
+      "id": "b192d5cc90fa1",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "What Is Microsoft Entra ID",
+      "question": "How does implementing Microsoft Entra ID compare to deploying AD DS domain controllers on Azure virtual machines?",
+      "options": [
+        "They're different services — neither involves deploying or relying on the other's domain controllers.",
+        "They're functionally identical because both install the exact same underlying directory service software.",
+        "Microsoft Entra ID is a managed wrapper around AD DS controllers on Azure VMs.",
+        "Microsoft Entra ID automatically deploys the domain controllers needed for an on-premises forest."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "The module explicitly treats these as different, unrelated services — Entra ID isn't a wrapper around VM-hosted domain controllers, and it doesn't deploy any domain controllers itself.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-22",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "a19e296c8ed46",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Tenants",
+      "question": "From a technical standpoint, what does the term tenant represent?",
+      "options": [
+        "An individual Microsoft Entra service instance, technically speaking.",
+        "A single Azure subscription, regardless of how many directories it uses.",
+        "A specific resource group used to organize identity-related resources.",
+        "A network boundary defined by a virtual network's address space."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Technically, a tenant is an individual Microsoft Entra instance — not a subscription, a resource group, or a network boundary.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "86d45f2ef6bf6",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Tenants",
+      "question": "What's true about adding a custom domain name to a Microsoft Entra tenant alongside its default onmicrosoft.com domain?",
+      "options": [
+        "A custom domain using the organization's own DNS namespace can be added too.",
+        "Custom domains can replace the default domain, but the two can never coexist.",
+        "Custom domains require a separate Microsoft Entra tenant to be created first.",
+        "Custom domains are available with the Premium P2 tier, never with Free."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Adding a custom domain alongside the default one is described as possible and common — it doesn't replace the default, require a new tenant, or need the P2 tier.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "1ca6f999825d66",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Schema",
+      "question": "What does the module say about extending the Microsoft Entra schema?",
+      "options": [
+        "It's easily extensible, and its extensions are fully reversible.",
+        "It can be extended, but extensions can never be reversed once applied.",
+        "It can't be extended under any circumstances, unlike the AD DS schema.",
+        "It can be extended by Microsoft support engineers, not by customers."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "The schema is described as easily extensible with fully reversible extensions — not irreversible, non-extensible, or support-engineer-only.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "1a8aa33262f30b",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Schema",
+      "question": "Since Microsoft Entra ID doesn't include the organizational unit (OU) class, how can administrators achieve a similar arrangement of objects?",
+      "options": [
+        "By organizing objects based on their group membership.",
+        "By creating nested resource groups that mirror an OU hierarchy.",
+        "By assigning each object to a separate Azure subscription.",
+        "By using Conditional Access policies to simulate an OU structure."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Group membership is the suggested equivalent arrangement — not nested resource groups, separate subscriptions, or Conditional Access policies.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "2c1161529c32a",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Schema",
+      "question": "What is the relationship between the Application class and the servicePrincipal class in Microsoft Entra ID?",
+      "options": [
+        "An Application object holds the definition; a servicePrincipal is its instance in a tenant.",
+        "A servicePrincipal holds the app's definition; an Application represents its instance in a tenant.",
+        "Application and servicePrincipal are two names for the exact same object, used interchangeably.",
+        "Application objects exist in AD DS, while servicePrincipal objects exist in Microsoft Entra ID."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Application holds the definition and servicePrincipal is its per-tenant instance — the roles aren't reversed, identical, or split across AD DS and Entra ID.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "106b03b31ad28b",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Schema",
+      "question": "Why does separating an application's definition from its servicePrincipal matter for multi-tenant scenarios?",
+      "options": [
+        "Defining an app once lets you reuse it across tenants via a service principal in each.",
+        "It lets a single servicePrincipal object be shared and reused identically across every tenant.",
+        "It removes the need to register the application in any tenant before it can be used.",
+        "It allows the application's definition to be edited independently in every tenant where it's used."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "This separation allows one definition to be reused across tenants via a service principal per tenant — service principals aren't shared as one object, registration is still required, and the definition isn't independently editable per tenant.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "2452d2a0228a8",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Comparing AD DS and Microsoft Entra ID",
+      "question": "Which of the following is a stated characteristic of AD DS?",
+      "options": [
+        "It's a true directory service with a hierarchical X.500-based structure.",
+        "It's accessed exclusively through a REST API over an HTTPS connection endpoint.",
+        "It primarily uses OAuth and OpenID Connect tokens for its authentication.",
+        "It's natively multi-tenant, isolating each company's data automatically by design."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "AD DS has a hierarchical X.500-based structure — REST API access, OAuth/OpenID Connect, and native multi-tenancy are Entra ID characteristics instead.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "85cc66fcfdf81",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra ID for Cloud Apps",
+      "question": "Besides Microsoft cloud services, which other kinds of applications can Microsoft Entra ID provide an SSO experience for, according to this module?",
+      "options": [
+        "Applications such as Facebook, Google services, and Yahoo.",
+        "Applications hosted on AD DS-joined virtual machines alone.",
+        "Applications published through the Azure Marketplace catalog.",
+        "Applications built using the Microsoft Identity Manager SDK."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Facebook, Google services, and Yahoo are named as SSO-capable third parties — Entra ID's SSO isn't limited to AD DS-joined VMs, Marketplace apps, or MIM SDK-built apps.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "1330e8c73bf8c2",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra ID for Cloud Apps",
+      "question": "What's true about Microsoft Entra authentication settings across the deployment slots of a single Web App?",
+      "options": [
+        "Different authentication settings can be applied to individual deployment slots.",
+        "All deployment slots are required to share identical authentication settings.",
+        "Authentication settings can be changed for the production slot alone.",
+        "Authentication settings for slots are managed entirely outside the Azure portal."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Per-slot authentication settings are explicitly supported — slots aren't forced to share identical settings, restricted to production-only changes, or managed outside the portal.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "d733b3775be86",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra ID P1 and P2 Plans",
+      "question": "Which Microsoft Entra ID P1 feature lets end users request to join groups while group owners approve membership?",
+      "options": [
+        "Self-service group management.",
+        "Conditional Access.",
+        "Identity Protection.",
+        "Privileged Identity Management."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Self-service group management covers this workflow — Conditional Access, Identity Protection, and Privileged Identity Management serve different purposes.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "1081fcfa9282f3",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra ID P1 and P2 Plans",
+      "question": "What is distinctive about the advanced security reports and alerts included in Microsoft Entra ID P1?",
+      "options": [
+        "They're machine learning based and highlight anomalies and inconsistent access patterns.",
+        "They're generated manually by Microsoft support on a quarterly basis.",
+        "They cover sign-ins that originate from non-browser applications alone.",
+        "They're available exclusively to Enterprise Admins, not to standard administrators."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "They're machine learning based, surfacing anomalies and inconsistent access patterns — not manually produced, non-browser-only, or restricted to Enterprise Admins.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "701058a81c812",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra ID P1 and P2 Plans",
+      "question": "What does the Cloud App Discovery feature of Microsoft Entra ID P1 do?",
+      "options": [
+        "It discovers the most frequently used cloud-based applications.",
+        "It automatically blocks any cloud application not on an approved allow-list.",
+        "It migrates discovered cloud applications into Microsoft Entra Domain Services.",
+        "It generates a complete network topology diagram of on-premises infrastructure."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Cloud App Discovery surfaces frequently used cloud apps — it doesn't block apps, migrate them into Entra Domain Services, or map on-premises network topology.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "995a93e23510c",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Domain Services",
+      "question": "What problem does Microsoft Entra Domain Services primarily address?",
+      "options": [
+        "Authenticating line-of-business apps in Azure without a VPN or DCs.",
+        "Replacing Microsoft Entra ID entirely as the organization's primary cloud identity provider.",
+        "Eliminating the need for any Microsoft Entra tenant to exist at all.",
+        "Providing a graphical reporting dashboard for AD DS replication network traffic."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "It's positioned as an alternative to a site-to-site VPN or replica domain controllers for authenticating migrated apps — it doesn't replace Entra ID, remove the need for a tenant, or just report on replication.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "146b6dbda8d68f",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Domain Services",
+      "question": "What domain-related capabilities does Microsoft Entra Domain Services provide?",
+      "options": [
+        "Group Policy management, domain joining, and Kerberos authentication.",
+        "LDAP schema replication and trust relationships between forests.",
+        "Computer object provisioning identical to a full AD DS deployment.",
+        "Native support for nested organizational units across domains."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "GPO management, domain joining, and Kerberos authentication are the stated capabilities — forest trusts, full AD DS-equivalent computer objects, and nested OUs aren't part of this service.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "1f6b9003590425",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Domain Services",
+      "question": "What's true about using Microsoft Entra Domain Services without any on-premises AD DS deployed?",
+      "options": [
+        "It works as a cloud service with no on-premises AD DS.",
+        "It needs at least one on-premises domain controller running to function.",
+        "It can operate as an extension of an existing AD DS forest.",
+        "It needs Microsoft Entra Connect installed locally first before it starts."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "It can run entirely cloud-only with no on-premises AD DS — it doesn't require a local domain controller, an existing forest, or a local Entra Connect install.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "f2f48c1350a17",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Quiz",
+      "domain": null,
+      "section": "Microsoft Entra Domain Services",
+      "question": "How is Microsoft Entra Domain Services billed?",
+      "options": [
+        "Per hour, based on the size of the directory.",
+        "A flat monthly fee, regardless of directory size.",
+        "Per authentication request that gets processed each time.",
+        "It's included at no extra cost with any Microsoft Entra tenant."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Billing is per hour based on directory size — not a flat monthly fee, per-request billing, or a free inclusion with any tenant.",
+      "box": 2,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-23",
+      "firstMissed": "2026-07-19"
+    },
+    {
+      "id": "14163afef3147d",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Practice Assessment",
+      "domain": null,
+      "section": "Tool Selection",
+      "question": "An organization wants to grant administrators temporary, time-bound elevated privileges that activate through an approval workflow rather than being permanently assigned. Which feature should they use?",
+      "options": [
+        "Microsoft Entra Privileged Identity Management.",
+        "Conditional Access, evaluated by device or location signals.",
+        "Microsoft Entra ID Protection, for sign-in risk.",
+        "Microsoft Identity Manager licensing, for hybrid identity stores."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Privileged Identity Management defines permanent and temporary administrators with an activation workflow — Conditional Access, Identity Protection, and MIM serve different purposes.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-21"
+    },
+    {
+      "id": "1c6d51ae67a5ad",
+      "quizTitle": "AZ-104 — Understand Microsoft Entra ID Practice Assessment",
+      "domain": null,
+      "section": "Single Choice",
+      "question": "An organization is moving line-of-business apps that rely on domain-joined authentication to Azure, and wants to avoid deploying or managing any domain controllers in the cloud. Which complete solution addresses this requirement?",
+      "options": [
+        "Microsoft Entra Domain Services, used as the complete fix.",
+        "A site-to-site VPN between the local infrastructure and Azure IaaS.",
+        "Replica domain controllers deployed as Azure VMs from the local AD DS.",
+        "Microsoft Entra ID alone, without enabling any additional service."
+      ],
+      "answer": 0,
+      "selectCount": null,
+      "explanation": "Entra Domain Services is presented as the alternative that avoids deploying or managing cloud domain controllers — a site-to-site VPN and replica domain controllers are the two approaches it's meant to replace, and Entra ID alone doesn't provide domain join or Kerberos authentication for these apps.",
+      "box": 1,
+      "masteredStreak": 0,
+      "nextReview": "2026-07-21",
+      "firstMissed": "2026-07-21"
+    }
+  ]
+}
