@@ -318,7 +318,6 @@ All other management groups and subscriptions fold up to this root group, which 
 
 ### Microsoft Entra ID
 Azure's identity and directory service. An Azure account is an identity in Microsoft Entra ID or in a directory that Microsoft Entra ID trusts.
-
 Listed among the global Azure services (with Azure Traffic Manager and Azure DNS) that don't require selecting a particular region.
 
 ### Azure RBAC
@@ -345,5 +344,68 @@ Gives $100 credit and free developer tools, and you can sign up without a credit
 Microsoft partners that offer a range of complete managed-cloud solutions for Azure.
 
 One of the ways to purchase Azure access — directly from Microsoft (via the website or a Microsoft representative) or through a Microsoft partner.
+
+---
+
+## 0.1.1 — Review Azure PowerShell module
+
+### Azure PowerShell
+A module that you add to Windows PowerShell or PowerShell 7 to connect to your Azure subscription and manage resources. Модуль: [[0.1.1.2 Review Azure PowerShell]].
+
+Provides a set of cmdlets to manage and administer Azure resources from the command line, and relies on PowerShell itself for the shell and command parsing. Works with PowerShell 7.2 and later on all platforms and is compatible with Windows PowerShell 5.1. Used to build automated tools on the Azure Resource Manager model; you can run it in the browser with Azure Cloud Shell or install it locally, in interactive mode (one command at a time) or scripting mode (a script of multiple commands).
+
+### Azure Az PowerShell module
+A set of cmdlets for managing Azure resources directly from PowerShell; the replacement for AzureRM and the recommended module for interacting with Azure. Модуль: [[0.1.1.3 Review the benefits of the Azure PowerShell module]], [[0.1.1.4 Install the Azure PowerShell module]].
+
+Based on the .NET Standard library, it works with PowerShell 7 and newer on Windows, macOS, and Linux, and is compatible with Windows PowerShell 5.1. Benefits include security and stability (such as token cache encryption), support for all Azure services, and new capabilities like cmdlets for advanced REST operations. It's a rollup module installed with the Install-Module cmdlet, the Azure PowerShell MSI, or the Az PowerShell Docker container, and is preinstalled in Azure Cloud Shell.
+
+### AzureRM
+The predecessor PowerShell module for Azure, replaced by the Az PowerShell module. Модуль: [[0.1.1.3 Review the benefits of the Azure PowerShell module]], [[0.1.1.5 Migrate Azure PowerShell from AzureRM to Azure]].
+
+Officially deprecated on February 29, 2024 — it may still function but is no longer maintained or supported. The latest release is 6.13.1, and it can't be installed alongside the Az module on Windows PowerShell 5.1. Migrate to Az with the Az.Tools.Migration toolkit; cmdlet names change in the process (for example, New-AzureRMVm becomes New-AzVm).
+
+### Microsoft Graph PowerShell module
+A PowerShell module that provides cmdlets for Microsoft Entra administrative tasks such as user management, domain management, and configuring single sign-on. Модуль: [[0.1.1.6 Review Microsoft Azure Active Directory module for Windows PowerShell and Azure Active Directory PowerShell for Graph modules]].
+
+Built on the Microsoft Graph API, it reaches Microsoft Entra ID and other services (SharePoint, Exchange, Outlook) through a single endpoint with one access token. Works with PowerShell 7 and Windows PowerShell 5.1, runs cross-platform, supports Microsoft Authentication Library (MSAL) modern authentication including passwordless sign-in, works with external identities, and uses least-privilege permissions that aren't pre-authorized. Install it with `Install-Module Microsoft.Graph` and connect with `Connect-MgGraph`.
+
+### Windows PowerShell
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### PowerShell cmdlets
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### Windows PowerShell pipeline
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### PowerShell providers
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### PowerShell drives
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### CIM
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### WMI
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### CI/CD
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### AD FS
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+### REST
+_(Определение — из MS Learn; в этом модуле термин только упомянут, не раскрыт. Заполнить, когда появится модуль, где он определяется.)_
+
+---
+
+## 0.1.2 — Review the features and tools for Azure Cloud Shell
+
+### Azure Cloud Shell
+An interactive, browser-accessible shell for managing Azure resources, available in the Azure portal and the Microsoft 365 admin portal, that lets you choose the shell experience that best suits you — Bash for Linux users or PowerShell for Windows users. Модуль: [[0.1.2.2 Review the characteristics of Azure Cloud Shell]], [[0.1.2.3 Review the features and tools of Azure Cloud Shell]]. Ранее упоминался в: [[0.1.1.2 Review Azure PowerShell]], [[0.1.1.4 Install the Azure PowerShell module]].
+
+It runs on a temporary host provided per session and per user, authenticates automatically for instant access to your resources, and times out after 20 minutes of inactivity. Machine state doesn't persist across sessions; files persist only when you mount an Azure file share, in which case `$HOME` is stored as a 5-GB image and a share named `clouddrive` is attached and reused for all future sessions — otherwise the session is ephemeral. The same file share is used by both Bash and PowerShell. It offers an integrated graphical editor based on the open-source Monaco Editor and preconfigured authentication for many open-source tools (Azure CLI, AzCopy, Terraform, Ansible, Chef InSpec, kubectl, git, and more). PowerShell in Cloud Shell also exposes the Azure drive (`Azure:`) for navigating compute, network, and storage resources, and comes with Exchange Online PowerShell preinstalled. You can open it via [https://shell.azure.com](https://shell.azure.com/), the Cloud Shell icon in the Azure portal, the **Open Cloud Shell** button on Microsoft Learn code snippets, the Azure mobile app, or Visual Studio Code.
 
 ---

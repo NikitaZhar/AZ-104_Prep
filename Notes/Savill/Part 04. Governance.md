@@ -217,7 +217,7 @@ Custom roles can be created from scratch or cloned from an existing role, with p
 
 > **Exam tip:** Privileged Identity Management (PIM) provides just-in-time and just-enough access by making role assignments **eligible** rather than permanently **active**. Users activate the role for a limited period when they need it, following configured rules. In the portal, when adding a role assignment, the **Assignment type** option lets you choose eligible (the recommended default) versus active, and whether the assignment is permanent or time-bound.
 
-> **Exam tip:** PIM is a Microsoft Entra ID P2 feature and has an associated licensing cost. Access reviews (also part of Entra ID Governance) can be used to periodically review and fine-tune group memberships and access.
+> **Exam tip:** PIM is a [[Glossary#Microsoft Entra ID|Microsoft Entra ID]] P2 feature and has an associated licensing cost. Access reviews (also part of Entra ID Governance) can be used to periodically review and fine-tune group memberships and access.
 
 ## Attribute Based Access Control
 

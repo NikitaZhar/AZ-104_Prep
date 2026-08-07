@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Azure resources with Windows PowerShell — Practice</title>
+<style>
+:root{--bg:#0b1f2a;--panel:#102b3a;--text:#eef7fb;--muted:#a9c0cc;--accent:#7cc7ff;--accent2:#9ed8ff;--correct:#2ecc71;--wrong:#ff6b6b;--border:#315365}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#081922,#102b3a);color:var(--text);min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:28px}.app{width:min(1050px,100%);background:rgba(16,43,58,.98);border:1px solid var(--border);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}header{padding:28px 32px 18px;border-bottom:1px solid var(--border);background:rgba(8,25,34,.6)}h1{margin:0 0 10px;font-size:26px}.subtitle{color:var(--muted);font-size:15px;line-height:1.5}.progress-wrap{padding:22px 32px 0}.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-bottom:10px}.bar{width:100%;height:8px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:width .25s ease}main{padding:32px}.section{display:inline-block;color:var(--accent2);background:rgba(124,199,255,.12);border:1px solid rgba(124,199,255,.25);padding:8px 12px;border-radius:999px;font-size:14px;margin-bottom:20px}.question{font-size:24px;line-height:1.45;margin:0 0 26px}.question code,.option code{background:rgba(124,199,255,.12);border:1px solid rgba(124,199,255,.25);color:var(--accent2);padding:1px 6px;border-radius:6px;font-family:Consolas,Monaco,monospace;font-size:.92em}.options{display:grid;gap:12px;margin-bottom:24px}.option{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:rgba(8,25,34,.45);cursor:pointer;transition:border-color .15s ease,background .15s ease}.option:hover{border-color:var(--accent);background:rgba(124,199,255,.08)}.option input{margin-top:3px;transform:scale(1.2);accent-color:var(--accent)}.option.correct{border-color:var(--correct);background:rgba(46,204,113,.12)}.option.wrong{border-color:var(--wrong);background:rgba(255,107,107,.12)}.letter{color:var(--accent2);font-weight:bold;width:22px;flex:0 0 auto}.hint{color:var(--muted);font-size:14px;margin:-8px 0 16px}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px}button{border:0;border-radius:12px;padding:13px 18px;font-size:16px;font-weight:700;cursor:pointer;background:var(--accent);color:#062131}button.secondary{background:rgba(255,255,255,.12);color:var(--text);border:1px solid var(--border)}button:disabled{opacity:.45;cursor:not-allowed}.feedback{display:none;margin-top:22px;padding:18px;border-radius:14px;border:1px solid var(--border);background:rgba(8,25,34,.55);line-height:1.55}.feedback.show{display:block}.status{font-weight:800;margin-bottom:8px}.ok{color:var(--correct)}.bad{color:var(--wrong)}.results{display:none;padding:32px;line-height:1.55}.results.show{display:block}.score{font-size:42px;font-weight:800;margin:12px 0;color:var(--accent2)}.review{margin-top:24px;display:grid;gap:12px}.review-item{border:1px solid var(--border);border-radius:14px;padding:14px 16px;background:rgba(8,25,34,.45)}.review-item strong{color:var(--accent2)}.hidden{display:none}@media(max-width:640px){body{padding:12px}header,main,.progress-wrap,.results{padding-left:18px;padding-right:18px}.question{font-size:20px}h1{font-size:22px}}
+</style></head>
+<body><div class="app"><header><h1>Manage Azure resources with Windows PowerShell — Practice</h1><div class="subtitle"></div></header>
+<div id="quizArea"><div class="progress-wrap"><div class="progress-label"><span id="counter"></span><span id="scoreLive"></span></div><div class="bar"><div class="fill" id="progressFill"></div></div></div>
+<main><div class="section" id="section"></div><p class="question" id="question"></p><div class="hint" id="hint"></div><div class="options" id="options"></div><div class="controls"><button id="checkBtn">Check answer</button><button id="nextBtn" class="secondary" disabled>Next</button><button id="restartBtn" class="secondary">Restart</button></div><div class="feedback" id="feedback"><div class="status" id="status"></div><div id="explanation"></div></div></main></div>
+<div class="results" id="results"><h2>Quiz completed</h2><div class="score" id="finalScore"></div><p id="finalText"></p><div class="controls"><button id="restartBtn2">Restart quiz</button><button id="exportMistakesBtn" class="secondary">Export mistakes to journal</button><button id="createJournalBtn" class="secondary">No journal yet — create it</button></div><div class="review" id="review"></div></div></div>
+<script>
+const questions = [{"section": "Cmdlet Selection", "question": "You set $vm.HardwareProfile.VmSize to a new value in memory. Which cmdlet applies the resize?", "options": ["Update-AzVM", "Set-AzVM", "Resize-AzVM", "Restart-AzVM"], "answer": 0, "explanation": "After changing the VmSize on the retrieved VM object, you commit the change with Update-AzVM; the VM reboots during the resize."}, {"section": "Cmdlet Selection", "question": "Which command lists the VM sizes available in a particular region?", "options": ["Get-AzVMSize -Location", "Get-AzVM -Status", "Get-AzComputeResourceSku", "Get-AzLocation"], "answer": 0, "explanation": "Get-AzVMSize -Location \"EastUS\" returns the VM sizes available in that region; you can also scope it to a VM to see valid resize targets."}, {"section": "Cmdlet Selection", "question": "A deallocated VM must be started again. Which cmdlet do you run?", "options": ["Start-AzVM", "Restart-AzVM", "Resume-AzVM", "Enable-AzVM"], "answer": 0, "explanation": "Start-AzVM -ResourceGroupName ... -Name ... starts a stopped VM; Restart-AzVM only reboots an already running VM."}, {"section": "Cmdlet Selection", "question": "You must delete a VM and everything else inside its resource group. Which cmdlet does this?", "options": ["Remove-AzResourceGroup", "Remove-AzVM", "Remove-AzResource", "Clear-AzResourceGroup"], "answer": 0, "explanation": "Remove-AzResourceGroup -Name ... -Force deletes the resource group and all resources it contains, including VMs."}, {"section": "Cmdlet Selection", "question": "Which cmdlet creates a blob container inside a storage account?", "options": ["New-AzStorageContainer", "New-AzStorageBlob", "New-AzStorageAccount", "New-AzRmStorageContainer"], "answer": 0, "explanation": "New-AzStorageContainer -Name ... -Context $ctx -Permission Off creates a container using the storage account context."}, {"section": "Cmdlet Selection", "question": "Which cmdlet changes an existing storage account type to Standard_RAGRS?", "options": ["Set-AzStorageAccount", "Update-AzStorageAccount", "New-AzStorageAccount", "Edit-AzStorageAccount"], "answer": 0, "explanation": "Set-AzStorageAccount modifies an existing account; -Type \"Standard_RAGRS\" changes its replication type (it also sets custom domains and tags)."}, {"section": "Cmdlet Selection", "question": "Which command returns the public IP address of your newly created VM?", "options": ["Get-AzPublicIpAddress", "Get-AzNetworkInterface", "Get-AzVMIpAddress", "Get-AzPublicIp"], "answer": 0, "explanation": "Get-AzPublicIpAddress -ResourceGroupName ... | Select IpAddress returns the VM's public IP so you can open an RDP session."}, {"section": "Choose Three", "question": "In the documented flow, which cmdlets add a new data disk to an existing VM? (Choose Three)", "options": ["New-AzDiskConfig", "New-AzDisk", "Add-AzVMDataDisk", "New-AzVMConfig"], "answer": [0, 1, 2], "selectCount": 3, "explanation": "You define the disk with New-AzDiskConfig, create it with New-AzDisk, attach it with Add-AzVMDataDisk, then commit with Update-AzVM. New-AzVMConfig builds VM objects, not disks."}, {"section": "Cmdlet Selection", "question": "Which cmdlet sets the active subscription context for the current session?", "options": ["Set-AzContext", "Get-AzSubscription", "Connect-AzAccount", "Select-AzSubscription"], "answer": 0, "explanation": "Set-AzContext -Subscription ... sets the authentication context (tenant, subscription, environment) for cmdlets you run next."}, {"section": "Cmdlet Selection", "question": "Before calling New-AzVM, which cmdlet builds the virtual machine object to pass in?", "options": ["New-AzVMConfig", "New-AzVM", "Set-AzVMOperatingSystem", "New-AzResourceGroup"], "answer": 0, "explanation": "New-AzVMConfig creates the VM object; you then configure it (Set-AzVMOperatingSystem, Set-AzVMSourceImage, and so on) and pass it to New-AzVM."}, {"section": "Single Choice", "question": "Your scenario requires public anonymous blob access. What must you do first?", "options": ["Enable AllowBlobPublicAccess on the account", "Set the container permission to Off", "Recreate the storage account as GRS", "Assign a custom domain to storage"], "answer": 0, "explanation": "Public access is blocked at the account level by default; you must first run Set-AzStorageAccount -AllowBlobPublicAccess $true, which Microsoft doesn't recommend unless required."}, {"section": "Single Choice", "question": "Why do you capture the storage account context into $ctx?", "options": ["To avoid repeatedly passing credentials", "To encrypt the blobs at rest", "To enable geo-redundant replication", "To grant public container access"], "answer": 0, "explanation": "The context defines which storage account you act on; referencing $ctx avoids repeatedly passing credentials on each storage command."}, {"section": "Single Choice", "question": "You want to pass a hashtable of VM parameters to New-AzVM. Which syntax is correct?", "options": ["New-AzVM @vmParams", "New-AzVM $vmParams", "New-AzVM -vmParams", "New-AzVM (vmParams)"], "answer": 0, "explanation": "Splatting passes a parameter hashtable with the @ sigil: New-AzVM @vmParams applies each key as a named parameter."}, {"section": "Tool Selection", "question": "You have no local PowerShell configured but must create a VM right now. Which option lets you proceed?", "options": ["Azure Cloud Shell", "Reinstall Windows PowerShell locally", "The Azure Storage Explorer", "The Remote Desktop client"], "answer": 0, "explanation": "Cloud Shell in the Azure portal already has PowerShell and the Az module, so you can create the VM without any local setup."}, {"section": "Single Choice", "question": "After deploying a Windows VM, which local command opens the Remote Desktop session?", "options": ["mstsc /v:publicIpAddress", "ssh publicIpAddress", "Enter-PSSession publicIpAddress", "rdp publicIpAddress"], "answer": 0, "explanation": "On your local machine, mstsc /v:<publicIpAddress> starts the RDP session; you then sign in with the VM's local admin credentials."}];
+let current=0, score=0, checked=false, userAnswers=Array(questions.length).fill(null);
+let shuffledOptions = [];
+let correctSet = [];
+const $=id=>document.getElementById(id);
+
+function isMulti(q){return Array.isArray(q.answer);}
+
+function shuffleArray(array){
+  const result = [...array];
+  for(let i=result.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function updateLiveScore(){
+  const percent = current === 0 && score === 0 ? 0 : Math.round((score / questions.length) * 100);
+  $('scoreLive').textContent = `Score: ${score} / ${questions.length} (${percent}%)`;
+}
+
+function renderQuestion(){
+  const q=questions[current];
+  checked=false;
+  const answerArr = isMulti(q) ? q.answer : [q.answer];
+  shuffledOptions = shuffleArray(q.options.map((text, originalIndex)=>({text, originalIndex})));
+  correctSet = shuffledOptions.map((o,idx)=>answerArr.includes(o.originalIndex)?idx:-1).filter(x=>x>=0);
+
+  $('counter').textContent=`Question ${current+1} of ${questions.length}`;
+  updateLiveScore();
+  $('progressFill').style.width=`${(current/questions.length)*100}%`;
+  $('section').textContent=q.section;
+  $('question').innerHTML=q.question;
+  $('hint').textContent = '';
+  $('feedback').classList.remove('show');
+  $('status').textContent='';
+  $('explanation').textContent='';
+  $('nextBtn').disabled=true;
+  $('checkBtn').disabled=false;
+  $('options').innerHTML='';
+
+  const inputType = isMulti(q) ? 'checkbox' : 'radio';
+  shuffledOptions.forEach((option,index)=>{
+    const label=document.createElement('label');
+    label.className='option';
+    label.innerHTML=`<input type="${inputType}" name="answer" value="${index}"><span class="letter">${String.fromCharCode(65+index)}.</span><span>${option.text}</span>`;
+    $('options').appendChild(label);
+  });
+
+}
+
+function enforceLimit(){
+  const q=questions[current];
+  if(!isMulti(q))return;
+  const boxes=[...document.querySelectorAll('input[name="answer"]')];
+  const checkedCount=boxes.filter(b=>b.checked).length;
+  boxes.forEach(b=>{ b.disabled = (!b.checked && checkedCount>=q.selectCount); });
+}
+
+function selectedIndices(){
+  return [...document.querySelectorAll('input[name="answer"]:checked')].map(b=>Number(b.value));
+}
+
+function checkAnswer(){
+  if(checked)return;
+  const q=questions[current];
+  const sel=selectedIndices();
+  const need = isMulti(q) ? q.selectCount : 1;
+  if(sel.length!==need){
+    $('feedback').classList.add('show');
+    $('status').textContent = isMulti(q) ? `Please select ${q.selectCount} option(s).` : 'Please select an answer.';
+    $('status').className='status';
+    $('explanation').textContent='';
+    return;
+  }
+  checked=true;
+  const correctSorted=[...correctSet].sort((a,b)=>a-b).join(',');
+  const selSorted=[...sel].sort((a,b)=>a-b).join(',');
+  const ok = correctSorted===selSorted;
+  if(ok)score++;
+
+  userAnswers[current]={
+    selectedText: sel.map(i=>shuffledOptions[i].text).join(' | '),
+    correctText: correctSet.map(i=>shuffledOptions[i].text).join(' | '),
+    ok: ok
+  };
+
+  document.querySelectorAll('.option').forEach((el,index)=>{
+    el.querySelector('input').disabled=true;
+    if(correctSet.includes(index))el.classList.add('correct');
+    if(sel.includes(index)&&!correctSet.includes(index))el.classList.add('wrong');
+  });
+
+  $('feedback').classList.add('show');
+  $('status').textContent=ok?'Correct':'Incorrect';
+  $('status').className='status '+(ok?'ok':'bad');
+  $('explanation').textContent=q.explanation;
+  updateLiveScore();
+  $('nextBtn').disabled=false;
+  $('checkBtn').disabled=true;
+}
+
+function nextQuestion(){if(current<questions.length-1){current++;renderQuestion();}else showResults();}
+
+function showResults(){
+  $('progressFill').style.width='100%';
+  $('quizArea').classList.add('hidden');
+  $('results').classList.add('show');
+
+  const percent=Math.round(score/questions.length*100);
+  $('finalScore').textContent=`${score} / ${questions.length} (${percent}%)`;
+  $('finalText').textContent=percent>=85
+    ?'Отлично — материал модуля усвоен, можно двигаться дальше.'
+    :percent>=70
+      ?'Неплохо. Повтори разделы, где ошибся, и пройди снова.'
+      :'Стоит вернуться к материалу модуля и пройти заново.';
+
+  $('review').innerHTML='';
+  questions.forEach((q,i)=>{
+    const ua=userAnswers[i];
+    const ok=ua!==null && ua.ok;
+    const correctText = isMulti(q) ? q.answer.map(a=>q.options[a]).join(' | ') : q.options[q.answer];
+    const item=document.createElement('div');
+    item.className='review-item';
+    item.innerHTML=`<strong>${i+1}. ${q.section}</strong><br>${q.question}<br><span style="color:${ok?'var(--correct)':'var(--wrong)'}">${ua===null?'Not answered':(ok?'Correct':'Incorrect')}</span><br>Your answer: ${ua===null?'No answer':ua.selectedText}<br>Correct answer: ${ua===null?correctText:ua.correctText}<br><em>${q.explanation}</em>`;
+    $('review').appendChild(item);
+  });
+}
+
+function hashStr(s){
+  let h1=0xdeadbeef, h2=0x41c6ce57;
+  for(let i=0;i<s.length;i++){
+    const ch=s.charCodeAt(i);
+    h1=Math.imul(h1^ch,2654435761); h2=Math.imul(h2^ch,1597334677);
+  }
+  h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);
+  h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+  return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);
+}
+function todayStrLocal(){ const d=new Date(); d.setHours(0,0,0,0); return d.toISOString().slice(0,10); }
+async function ensureRWPermission(handle){
+  const opts={mode:'readwrite'};
+  if((await handle.queryPermission(opts))==='granted') return true;
+  if((await handle.requestPermission(opts))==='granted') return true;
+  return false;
+}
+function downloadFallbackExport(quizTitle, missed){
+  const payload={quizTitle, date:todayStrLocal(), mistakes:missed};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const safe=quizTitle.replace(/[^\w\-]+/g,'_').slice(0,60);
+  a.href=url; a.download='mistakes_'+safe+'_'+todayStrLocal()+'.json';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+async function exportMistakesToJournal(forceCreate){
+  const quizTitle = document.title || 'AZ-104 Quiz';
+  const missed = [];
+  questions.forEach((q,i)=>{
+    const ua = userAnswers[i];
+    if(!ua || !ua.ok){
+      missed.push({section:q.section, question:q.question, options:q.options, answer:q.answer, selectCount:q.selectCount||null, explanation:q.explanation});
+    }
+  });
+  if(missed.length===0){ alert('Ошибок нет — нечего экспортировать.'); return; }
+  if(!('showOpenFilePicker' in window)){
+    alert('Браузер не поддерживает прямую запись в файл (нужен Chrome/Edge). Скачиваю отдельный файл — импортируйте его вручную в Журнал ошибок.');
+    downloadFallbackExport(quizTitle, missed);
+    return;
+  }
+  let handle;
+  try{
+    if(forceCreate){
+      handle = await window.showSaveFilePicker({suggestedName:'az104-mistakes-journal.json', types:[{description:'Журнал ошибок JSON', accept:{'application/json':['.json']}}]});
+    } else {
+      [handle] = await window.showOpenFilePicker({types:[{description:'Журнал ошибок JSON', accept:{'application/json':['.json']}}]});
+    }
+  }catch(e){ if(e.name!=='AbortError') console.error(e); return; }
+
+  let journal;
+  try{
+    const perm = await ensureRWPermission(handle);
+    if(!perm){ alert('Нет разрешения на запись в файл.'); return; }
+    const file = await handle.getFile();
+    const text = await file.text();
+    journal = text.trim() ? JSON.parse(text) : {mistakes:[]};
+    if(!journal.mistakes || !Array.isArray(journal.mistakes)) journal.mistakes=[];
+  }catch(e){ alert('Не удалось прочитать файл журнала: '+e.message); return; }
+
+  let added=0, reset=0;
+  missed.forEach(q=>{
+    const id = hashStr(quizTitle+'|'+q.section+'|'+q.question);
+    const existing = journal.mistakes.find(m=>m.id===id);
+    if(existing){ existing.box=1; existing.masteredStreak=0; existing.nextReview=todayStrLocal(); reset++; }
+    else{
+      journal.mistakes.push({id, quizTitle, domain:null, section:q.section, question:q.question, options:q.options, answer:q.answer, selectCount:q.selectCount, explanation:q.explanation, box:1, masteredStreak:0, nextReview:todayStrLocal(), firstMissed:todayStrLocal()});
+      added++;
+    }
+  });
+  try{
+    const writable = await handle.createWritable();
+    await writable.write(JSON.stringify(journal,null,2));
+    await writable.close();
+  }catch(e){ alert('Не удалось сохранить журнал: '+e.message); return; }
+  alert(`Готово. Новых вопросов: ${added}, повторно ошиблись: ${reset}.`);
+}
+
+function restart(){current=0;score=0;checked=false;userAnswers=Array(questions.length).fill(null);$('results').classList.remove('show');$('quizArea').classList.remove('hidden');renderQuestion();}
+$('options').addEventListener('change',enforceLimit);$('checkBtn').addEventListener('click',checkAnswer);$('nextBtn').addEventListener('click',nextQuestion);$('restartBtn').addEventListener('click',restart);$('restartBtn2').addEventListener('click',restart);$('exportMistakesBtn').addEventListener('click',()=>exportMistakesToJournal(false));$('createJournalBtn').addEventListener('click',()=>exportMistakesToJournal(true));renderQuestion();
+</script></body></html>

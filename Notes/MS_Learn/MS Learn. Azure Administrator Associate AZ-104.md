@@ -11,7 +11,8 @@ Certification AZ-104
 
 Мета / инструменты
 [[_Numbering Plan]]
-[[_Quiz Builder (Contract)]]
+[[_Unit Processing Contract]]
+[[_Quiz Builder Contract]]
 
 Повторение ошибок
 [[az104-mistake-log.html]] 
